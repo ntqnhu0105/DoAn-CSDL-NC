@@ -1,0 +1,21 @@
+﻿@model dynamic
+<h2>Đăng ký</h2>
+<form asp-action="Register" method="post">
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" required />
+    </div>
+    <div>
+        <label>Mật khẩu</label>
+        <input type="password" name="password" required />
+    </div>
+    <div>
+        <label>Họ và tên</label>
+        <input type="text" name="hovaTen" required />
+    </div>
+    <div>
+        <label>CCCD</label>
+        <input type="text" name="cccd" />
+    </div>
+    <button type="submit">Đăng ký</button>
+</form>

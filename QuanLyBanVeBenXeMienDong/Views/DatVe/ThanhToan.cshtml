@@ -1,0 +1,37 @@
+﻿@model QuanLyBanVeBenXeMienDong.Models.Data.VeXe
+
+@{
+    ViewData["Title"] = "Thanh toán vé";
+    // Tính tổng tiền
+    decimal tongTien = Model.ChuyenXe.Gia * Model.SoLuongVe;
+}
+
+<div class="container mt-4">
+    <h2>Thanh toán vé</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Thông tin vé</h5>
+            <p><strong>Mã vé:</strong> @Model.MaVeXe</p>
+            <p><strong>Tuyến xe:</strong> @Model.ChuyenXe.TuyenXe.DiemDi - @Model.ChuyenXe.TuyenXe.DiemDen</p>
+            <p><strong>Ngày khởi hành:</strong> @Model.ChuyenXe.NgayKhoiHanh.ToString("dd/MM/yyyy")</p>
+            <p><strong>Giờ khởi hành:</strong> @Model.ChuyenXe.GioKhoiHanh.ToString(@"hh\:mm")</p>
+            <p><strong>Ghế:</strong> @Model.MaSoGhe</p>
+            <p><strong>Giá vé đơn:</strong> @Model.ChuyenXe.Gia.ToString("N0") VNĐ</p>
+            <p><strong>Số lượng vé:</strong> @Model.SoLuongVe</p>
+            <p><strong>Tổng tiền:</strong> <span class="text-success fw-bold">@tongTien.ToString("N0") VNĐ</span></p>
+            <p><strong>Trạng thái:</strong> @Model.TrangThai</p>
+
+            <form asp-action="ThanhToan" method="post">
+                <input type="hidden" name="maVeXe" value="@Model.MaVeXe" />
+                <div class="form-group">
+                    <label>Phương thức thanh toán</label>
+                    <select name="phuongThucThanhToan" class="form-control" required>
+                        <option value="online">Thanh toán online</option>
+                        <option value="taiQuay">Thanh toán tại quầy</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Xác nhận thanh toán</button>
+            </form>
+        </div>
+    </div>
+</div>

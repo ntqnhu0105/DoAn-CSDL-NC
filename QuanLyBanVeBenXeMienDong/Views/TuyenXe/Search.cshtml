@@ -1,0 +1,82 @@
+﻿@model List<QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe>
+
+@{
+    ViewData["Title"] = "Tìm kiếm tuyến xe";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Tìm kiếm tuyến xe</h2>
+
+    <div class="card p-4 mb-4">
+        <form asp-action="Search" method="get">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="form-label">Điểm đi:</label>
+                        <input type="text" name="diemDi" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="form-label">Điểm đến:</label>
+                        <input type="text" name="diemDen" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Kết quả tìm kiếm</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mã chuyến</th>
+                            <th>Điểm đi</th>
+                            <th>Điểm đến</th>
+                            <th>Ngày khởi hành</th>
+                            <th>Giờ khởi hành</th>
+                            <th>Giá (VNĐ)</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var chuyen in Model)
+                        {
+                            <tr>
+                                <td>@chuyen.MaChuyen</td>
+                                <td>@chuyen.TuyenXe.DiemDi</td>
+                                <td>@chuyen.TuyenXe.DiemDen</td>
+                                <td>@chuyen.NgayKhoiHanh.ToString("dd/MM/yyyy")</td>
+                                <td>@chuyen.GioKhoiHanh.ToString(@"hh\:mm")</td>
+                                <td>@chuyen.Gia.ToString("N0")</td>
+                                <td>@chuyen.TrangThai</td>
+                                <td>
+                                    <a asp-controller="DatVe" asp-action="Book" asp-route-maChuyen="@chuyen.MaChuyen"
+                                       class="btn btn-success btn-sm">
+                                        Đặt vé
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else if (Model != null)
+    {
+        <div class="alert alert-info">
+            Không tìm thấy chuyến xe nào phù hợp.
+        </div>
+    }
+</div>  

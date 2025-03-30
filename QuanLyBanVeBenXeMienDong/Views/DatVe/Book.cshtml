@@ -1,0 +1,50 @@
+﻿@model QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe
+@{
+    ViewData["Title"] = "Đặt Vé Xe";
+    var gheTrong = ViewBag.GheTrong as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
+}
+
+<div class="container">
+    <h2 class="text-center mt-4">Đặt Vé Xe</h2>
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4>Chuyến Xe: @Model.MaChuyen</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Book" method="post">
+                <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
+                <input type="hidden" name="maXe" value="@Model.MaXe" />
+                <div class="form-group">
+                    <label for="sdt">Số điện thoại</label>
+                    <input type="text" name="sdt" class="form-control" required maxlength="11" />
+                </div>
+                <div class="form-group">
+                    <label for="soLuongVe">Số lượng vé</label>
+                    <input type="number" name="soLuongVe" id="soLuongVe" class="form-control" required min="1" value="1" onchange="updateGheSelection()" />
+                </div>
+                <div class="form-group">
+                    <label>Chọn ghế</label>
+                    <div id="gheContainer">
+                        @if (gheTrong != null && gheTrong.Any())
+                        {
+                            foreach (var ghe in gheTrong)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" class="form-check-input gheCheckbox" />
+                                    <label class="form-check-label">@ghe.MaSoGhe</label>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p>Không còn ghế trống.</p>
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Đặt vé</button>
+            </form>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="~/css/DatVe/Book.css" />
+<script src="~/js/DatVe/Book.js"></script>
