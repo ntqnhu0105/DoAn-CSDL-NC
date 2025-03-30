@@ -1,0 +1,66 @@
+﻿@model List<QuanLyBanVeBenXeMienDong.Models.Data.VeXe>
+
+@{
+    ViewData["Title"] = "Lịch sử đặt vé";
+}
+
+<div class="container mt-4">
+    <h2>Lịch sử đặt vé</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            Bạn chưa đặt vé nào.
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mã vé</th>
+                            <th>Tuyến xe</th>
+                            <th>Ngày khởi hành</th>
+                            <th>Giờ khởi hành</th>
+                            <th>Ghế</th>
+                            <th>Số lượng vé</th>
+                            <th>Giá (VNĐ)</th>
+                            <th>Ngày đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ve in Model)
+                        {
+                            <tr>
+                                <td>@ve.MaVeXe</td>
+                                <td>@ve.ChuyenXe.TuyenXe.DiemDi - @ve.ChuyenXe.TuyenXe.DiemDen</td>
+                                <td>@ve.ChuyenXe.NgayKhoiHanh.ToString("dd/MM/yyyy")</td>
+                                <td>@ve.ChuyenXe.GioKhoiHanh.ToString(@"hh\:mm")</td>
+                                <td>@ve.MaSoGhe</td>
+                                <td>@ve.SoLuongVe</td>
+                                <td>@ve.ChuyenXe.Gia.ToString("N0")</td>
+                                <td>@ve.NgayDatVe.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@ve.TrangThai</td>
+                                <td>
+                                    <a asp-action="XacNhan" asp-route-maVeXe="@ve.MaVeXe" class="btn btn-info btn-sm">Xem</a>
+                                    @if (ve.TrangThai == "Đã đặt" || ve.TrangThai == "Đã thanh toán")
+                                    {
+                                        <form asp-action="HuyVe" method="post" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn hủy vé này không?');">
+                                            <input type="hidden" name="maVeXe" value="@ve.MaVeXe" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Hủy</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Về trang chủ</a>
+</div>
