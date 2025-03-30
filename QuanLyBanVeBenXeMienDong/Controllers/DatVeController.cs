@@ -165,13 +165,13 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 .Include(v => v.ChuyenXe)
                 .ThenInclude(c => c.TuyenXe)
                 .Include(v => v.ChuyenXe.Xe)
-                .ThenInclude(x => x.LoaiXe) // Thêm ThenInclude để tải LoaiXe
+                .ThenInclude(x => x.LoaiXe)
                 .Include(v => v.KhachHang)
                 .FirstOrDefaultAsync(v => v.MaVeXe == maVeXe);
 
-            if (veXe == null || veXe.TrangThai != "Đã thanh toán")
+            if (veXe == null)
             {
-                return NotFound("Vé không tồn tại hoặc chưa được thanh toán.");
+                return NotFound("Vé không tồn tại.");
             }
 
             if (veXe.MaKh != user.MaKh)
@@ -179,15 +179,72 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 return Forbid("Bạn không có quyền xem thông tin vé này.");
             }
 
-            // Kiểm tra các navigation properties
-            if (veXe.ChuyenXe == null || veXe.ChuyenXe.TuyenXe == null || veXe.ChuyenXe.Xe == null || veXe.ChuyenXe.Xe.LoaiXe == null || veXe.KhachHang == null)
+            return View(veXe);
+        }
+        [Authorize]
+        public async Task<IActionResult> LichSuDatVe()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var maKh = user.MaKh;
+
+            if (string.IsNullOrEmpty(maKh))
             {
-                // Ghi log để kiểm tra (hoặc dùng Console.WriteLine nếu đang debug)
-                Console.WriteLine($"Dữ liệu thiếu: ChuyenXe: {veXe.ChuyenXe != null}, TuyenXe: {veXe.ChuyenXe?.TuyenXe != null}, Xe: {veXe.ChuyenXe?.Xe != null}, LoaiXe: {veXe.ChuyenXe?.Xe?.LoaiXe != null}, KhachHang: {veXe.KhachHang != null}");
-                return BadRequest("Dữ liệu vé không đầy đủ.");
+                return NotFound("Bạn chưa có mã khách hàng. Vui lòng đặt vé trước để xem lịch sử.");
             }
 
-            return View(veXe);
+            var danhSachVe = await _context.VeXes
+                .Include(v => v.ChuyenXe)
+                .ThenInclude(c => c.TuyenXe)
+                .Include(v => v.ChuyenXe.Xe)
+                .ThenInclude(x => x.LoaiXe)
+                .Include(v => v.KhachHang)
+                .Where(v => v.MaKh == maKh)
+                .OrderByDescending(v => v.NgayDatVe) // Sắp xếp theo ngày đặt vé mới nhất
+                .ToListAsync();
+
+            return View(danhSachVe);
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> HuyVe(string maVeXe)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var veXe = await _context.VeXes
+                .Include(v => v.ChuyenXe)
+                .FirstOrDefaultAsync(v => v.MaVeXe == maVeXe);
+
+            if (veXe == null)
+            {
+                return NotFound("Vé không tồn tại.");
+            }
+
+            if (veXe.MaKh != user.MaKh)
+            {
+                return Forbid("Bạn không có quyền hủy vé này.");
+            }
+
+            if (veXe.TrangThai != "Đã đặt" && veXe.TrangThai != "Đã thanh toán")
+            {
+                return BadRequest("Chỉ có thể hủy vé ở trạng thái 'Đã đặt' hoặc 'Đã thanh toán'.");
+            }
+
+            veXe.TrangThai = "Đã hủy";
+            _context.VeXes.Update(veXe);
+
+            var maSoGheList = veXe.MaSoGhe.Split(',');
+            var gheList = await _context.SoGheSoGiuongs
+                .Where(sg => sg.MaChuyen == veXe.MaChuyen && sg.MaXe == veXe.MaXe && maSoGheList.Contains(sg.MaSoGhe))
+                .ToListAsync();
+
+            foreach (var ghe in gheList)
+            {
+                ghe.TrangThai = "Trống";
+                _context.SoGheSoGiuongs.Update(ghe);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("LichSuDatVe");
         }
     }
 }

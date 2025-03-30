@@ -5,8 +5,35 @@
     decimal tongTien = Model.ChuyenXe.Gia * Model.SoLuongVe;
 }
 
-<div class="container">
-    <h2 class="text-center mt-4 text-success">Xác Nhận Đặt Vé Thành Công</h2>
+<div class="container mt-4">
+    <h2 class="text-center text-success">Xác Nhận Đặt Vé</h2>
+
+    <!-- Thông báo theo trạng thái vé -->
+    @if (Model.TrangThai == "Đã thanh toán")
+    {
+            <div class="alert alert-success text-center">
+                Thanh toán thành công! Dưới đây là thông tin vé của bạn.
+            </div>
+    }
+    else if (Model.TrangThai == "Đã hủy")
+    {
+            <div class="alert alert-warning text-center">
+                Vé này đã bị hủy.
+            </div>
+    }
+    else if (Model.TrangThai == "Đã đặt")
+    {
+            <div class="alert alert-info text-center">
+                Vé đã được đặt. Vui lòng hoàn tất thanh toán để xác nhận.
+            </div>
+    }
+    else
+    {
+            <div class="alert alert-secondary text-center">
+                Thông tin vé của bạn (Trạng thái: @Model.TrangThai).
+            </div>
+    }
+
     <div class="card mt-4 shadow-sm">
         <div class="card-header bg-primary text-white text-center">
             <h4>Mã Vé: @Model.MaVeXe</h4>
@@ -56,6 +83,7 @@
         </div>
         <div class="card-footer text-center">
             <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Quay về Trang Chủ</a>
+            <a href="@Url.Action("LichSuDatVe", "DatVe")" class="btn btn-secondary">Quay lại Lịch Sử</a>
         </div>
     </div>
 </div>
