@@ -34,11 +34,25 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 return NotFound("Chuyến xe không tồn tại hoặc không khả dụng.");
             }
 
-            var gheTrong = await _context.SoGheSoGiuongs
-                .Where(sg => sg.MaChuyen == maChuyen && sg.TrangThai == "Trống")
+            var gheList = await _context.SoGheSoGiuongs
+                .Where(sg => sg.MaChuyen == maChuyen)
                 .ToListAsync();
 
-            ViewBag.GheTrong = gheTrong;
+            // Chia ghế theo tầng
+            ViewBag.GheTangDuoi = gheList.Where(g => g.Tang == 1).OrderBy(g => g.MaSoGhe).ToList();
+            ViewBag.GheTangTren = gheList.Where(g => g.Tang == 2).OrderBy(g => g.MaSoGhe).ToList();
+
+            // Lấy số điện thoại của người dùng
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                ViewBag.Sdt = user?.PhoneNumber ?? "";
+            }
+            else
+            {
+                ViewBag.Sdt = "";
+            }
+
             return View(chuyenXe);
         }
 
@@ -103,11 +117,11 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 MaChuyen = maChuyen,
                 MaKh = maKh,
                 MANV = "NV000",
-                MaSoGhe = string.Join(",", maSoGhe), // Lưu danh sách ghế dưới dạng chuỗi
+                MaSoGhe = string.Join(",", maSoGhe),
                 MaXe = maXe,
                 NgayDatVe = DateTime.Now,
                 TrangThai = "Đã đặt",
-                SoLuongVe = soLuongVe // Gán số lượng vé từ form
+                SoLuongVe = soLuongVe
             };
 
             // Cập nhật trạng thái các ghế được chọn

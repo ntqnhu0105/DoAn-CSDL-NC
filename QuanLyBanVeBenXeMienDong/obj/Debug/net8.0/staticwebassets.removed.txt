@@ -1,15 +1,2 @@
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\font-times-new-roman.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman 2 bold italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman 2 bold.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman 2 italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman 2.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman Bold Italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman Bold.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman Italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\SVN-Times New Roman.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\Times New Roman 400.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\times new roman bold italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\times new roman bold.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\times new roman italic.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\times new roman.ttf
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\times-new-roman-14.ttf
+D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\css\DatVe\Book.css
+D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\js\DatVe\Book.js

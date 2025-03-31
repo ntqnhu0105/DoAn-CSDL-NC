@@ -1,50 +1,129 @@
-﻿@model QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe
+﻿@using Microsoft.AspNetCore.Identity
+@model QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe
+
 @{
-    ViewData["Title"] = "Đặt Vé Xe";
-    var gheTrong = ViewBag.GheTrong as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
+    ViewData["Title"] = "Chọn ghế - Đặt vé";
+    var gheTangDuoi = ViewBag.GheTangDuoi as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
+    var gheTangTren = ViewBag.GheTangTren as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
 }
 
-<div class="container">
-    <h2 class="text-center mt-4">Đặt Vé Xe</h2>
-    <div class="card mt-4">
-        <div class="card-header">
-            <h4>Chuyến Xe: @Model.MaChuyen</h4>
-        </div>
-        <div class="card-body">
-            <form asp-action="Book" method="post">
-                <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
-                <input type="hidden" name="maXe" value="@Model.MaXe" />
-                <div class="form-group">
-                    <label for="sdt">Số điện thoại</label>
-                    <input type="text" name="sdt" class="form-control" required maxlength="11" />
-                </div>
-                <div class="form-group">
-                    <label for="soLuongVe">Số lượng vé</label>
-                    <input type="number" name="soLuongVe" id="soLuongVe" class="form-control" required min="1" value="1" onchange="updateGheSelection()" />
-                </div>
-                <div class="form-group">
-                    <label>Chọn ghế</label>
-                    <div id="gheContainer">
-                        @if (gheTrong != null && gheTrong.Any())
-                        {
-                            foreach (var ghe in gheTrong)
-                            {
-                                <div class="form-check">
-                                    <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" class="form-check-input gheCheckbox" />
-                                    <label class="form-check-label">@ghe.MaSoGhe</label>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <p>Không còn ghế trống.</p>
-                        }
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Đặt vé</button>
-            </form>
+<div class="container mt-4">
+    <h2>Chọn ghế - Đặt vé</h2>
+    <h4>Tuyến: @Model.TuyenXe.DiemDi - @Model.TuyenXe.DiemDen</h4>
+    <p>Ngày khởi hành: @Model.NgayKhoiHanh.ToString("dd/MM/yyyy") | Giờ: @Model.GioKhoiHanh</p>
+    <p>Giá vé: @Model.Gia.ToString("N0")đ</p>
+
+    <!-- Chú thích -->
+    <div class="mb-3">
+        <h5>Chú thích</h5>
+        <div class="d-flex align-items-center">
+            <div class="me-3">
+                <span class="badge bg-secondary">X</span> Ghế không bán
+            </div>
+            <div class="me-3">
+                <span class="badge bg-success">✔</span> Đang chọn
+            </div>
+            <div>
+                <span class="badge bg-primary"> </span> Ghế trống
+            </div>
         </div>
     </div>
+
+    <form asp-action="Book" method="post">
+        <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
+        <input type="hidden" name="maXe" value="@Model.MaXe" />
+        <input type="hidden" name="sdt" value="@ViewBag.Sdt" />
+        <div class="row">
+            <!-- Tầng dưới -->
+            <div class="col-md-6">
+                <h5>Tầng dưới</h5>
+                <div class="d-flex flex-wrap">
+                    @if (gheTangDuoi != null && gheTangDuoi.Any())
+                    {
+                        @foreach (var ghe in gheTangDuoi)
+                        {
+                            var cssClass = ghe.TrangThai switch
+                            {
+                                "Đã đặt" => "bg-secondary text-white",
+                                "Không bán" => "bg-secondary text-white",
+                                _ => "bg-primary"
+                            };
+                                    <div class="m-1">
+                                        <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
+                                @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
+                                        <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
+                                    @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
+                                        </label>
+                                    </div>
+                        }
+                    }
+                    else
+                    {
+                            <p>Không có ghế nào ở tầng dưới.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Tầng trên -->
+            <div class="col-md-6">
+                <h5>Tầng trên</h5>
+                <div class="d-flex flex-wrap">
+                    @if (gheTangTren != null && gheTangTren.Any())
+                    {
+                        @foreach (var ghe in gheTangTren)
+                        {
+                            var cssClass = ghe.TrangThai switch
+                            {
+                                "Đã đặt" => "bg-secondary text-white",
+                                "Không bán" => "bg-secondary text-white",
+                                _ => "bg-primary"
+                            };
+                                    <div class="m-1">
+                                        <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
+                                @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
+                                        <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
+                                    @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
+                                        </label>
+                                    </div>
+                        }
+                    }
+                    else
+                    {
+                            <p>Không có ghế nào ở tầng trên.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <label>Số lượng vé</label>
+            <input type="number" name="soLuongVe" id="soLuongVe" class="form-control" readonly />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Tiếp tục đặt vé</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Quay lại</a>
+    </form>
 </div>
-<link rel="stylesheet" href="~/css/DatVe/Book.css" />
-<script src="~/js/DatVe/Book.js"></script>
+
+@section Scripts {
+        <script>
+            document.querySelectorAll('.ghe-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const label = this.nextElementSibling;
+                    if (this.checked) {
+                        label.classList.remove('bg-primary');
+                        label.classList.add('bg-success');
+                        label.innerHTML = '✔';
+                    } else {
+                        label.classList.remove('bg-success');
+                        label.classList.add('bg-primary');
+                        label.innerHTML = this.value;
+                    }
+
+                    // Cập nhật số lượng vé
+                    const selectedSeats = document.querySelectorAll('.ghe-checkbox:checked').length;
+                    document.getElementById('soLuongVe').value = selectedSeats;
+                });
+            });
+        </script>
+}

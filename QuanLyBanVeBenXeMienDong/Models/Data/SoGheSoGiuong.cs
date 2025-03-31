@@ -19,7 +19,7 @@ namespace QuanLyBanVeBenXeMienDong.Models.Data
         [Required]
         [StringLength(10)]
         public string TrangThai { get; set; }
-
+        public int Tang { get; set; }
         // Navigation properties
         public Xe Xe { get; set; }
         public ChuyenXe ChuyenXe { get; set; }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rvJZGvFvfSho3+owDOPiqa15Lbr0fqjPJ4CJNbzGxy0=",
+  "Hash": "zJzvjhW4dzQU0di6GooCE6sKfGsNZZqIj7+w/nnB8Eg=",
   "Source": "QuanLyBanVeBenXeMienDong",
   "BasePath": "_content/QuanLyBanVeBenXeMienDong",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ec32o9k4y1",
-      "Integrity": "kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM=",
+      "Fingerprint": "5j09l3gwce",
+      "Integrity": "8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\DatVe\\Book.css"
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rd2f1c0u9h",
-      "Integrity": "MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws=",
+      "Fingerprint": "q5000ymvwm",
+      "Integrity": "zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\DatVe\\Book.js"
@@ -1405,6 +1405,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/DatVe/Book.5j09l3gwce.css",
+      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "155"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 23:32:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5j09l3gwce"
+        },
+        {
+          "Name": "label",
+          "Value": "css/DatVe/Book.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU="
+        }
+      ]
+    },
+    {
       "Route": "css/DatVe/Book.css",
       "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
       "Selectors": [],
@@ -1415,7 +1460,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "104"
+          "Value": "155"
         },
         {
           "Name": "Content-Type",
@@ -1423,11 +1468,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM=\""
+          "Value": "\"8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 05:41:35 GMT"
+          "Value": "Mon, 31 Mar 2025 23:32:07 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1437,52 +1482,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM="
-        }
-      ]
-    },
-    {
-      "Route": "css/DatVe/Book.ec32o9k4y1.css",
-      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "104"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 05:41:35 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ec32o9k4y1"
-        },
-        {
-          "Name": "label",
-          "Value": "css/DatVe/Book.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM="
+          "Value": "sha256-8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU="
         }
       ]
     },
@@ -1661,7 +1661,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "704"
+          "Value": "841"
         },
         {
           "Name": "Content-Type",
@@ -1669,11 +1669,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws=\""
+          "Value": "\"zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 05:40:58 GMT"
+          "Value": "Mon, 31 Mar 2025 23:32:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1683,12 +1683,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws="
+          "Value": "sha256-zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k="
         }
       ]
     },
     {
-      "Route": "js/DatVe/Book.rd2f1c0u9h.js",
+      "Route": "js/DatVe/Book.q5000ymvwm.js",
       "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\DatVe\\Book.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1698,7 +1698,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "704"
+          "Value": "841"
         },
         {
           "Name": "Content-Type",
@@ -1706,11 +1706,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws=\""
+          "Value": "\"zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Mar 2025 05:40:58 GMT"
+          "Value": "Mon, 31 Mar 2025 23:32:00 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1720,7 +1720,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rd2f1c0u9h"
+          "Value": "q5000ymvwm"
         },
         {
           "Name": "label",
@@ -1728,7 +1728,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws="
+          "Value": "sha256-zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k="
         }
       ]
     },
