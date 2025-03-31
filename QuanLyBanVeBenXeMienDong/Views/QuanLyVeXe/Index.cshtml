@@ -1,0 +1,41 @@
+﻿@model IEnumerable<QuanLyBanVeBenXeMienDong.Models.Data.VeXe>
+
+<h2>Danh sách vé xe</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã vé</th>
+            <th>Mã chuyến</th>
+            <th>Mã khách hàng</th>
+            <th>Mã nhân viên</th>
+            <th>Mã ghế</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ve in Model)
+        {
+            <tr>
+                <td>@ve.MaVeXe</td>
+                <td>@ve.MaChuyen</td>
+                <td>@ve.MaKh</td>
+                <td>@ve.MANV</td>
+                <td>@ve.MaSoGhe</td>
+                <td>@ve.NgayDatVe.ToShortDateString()</td>
+                <td>@ve.TrangThai</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@ve.MaVeXe">Sửa</a> |
+                    <a asp-action="Delete" asp-route-id="@ve.MaVeXe">Hủy</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>Không có vé xe nào để hiển thị.</p>
+}

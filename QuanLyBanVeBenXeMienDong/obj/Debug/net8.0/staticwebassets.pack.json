@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\js\\DatVe\\Book.js"
     },
     {
+      "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
+      "PackagePath": "staticwebassets\\js\\QuanLyVeXe\\Edit.js"
+    },
+    {
       "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

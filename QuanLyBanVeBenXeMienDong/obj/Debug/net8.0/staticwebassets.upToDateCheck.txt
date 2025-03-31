@@ -2,6 +2,7 @@ wwwroot\css\DatVe\Book.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\DatVe\Book.js
+wwwroot\js\QuanLyVeXe\Edit.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
