@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kJacaW+HPbIonQIpKlBlePbK32Af/BrAzi5SaJBj4KU=",
+  "Hash": "rvJZGvFvfSho3+owDOPiqa15Lbr0fqjPJ4CJNbzGxy0=",
   "Source": "QuanLyBanVeBenXeMienDong",
   "BasePath": "_content/QuanLyBanVeBenXeMienDong",
   "Mode": "Default",
@@ -1380,6 +1380,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\times.ttf",
+      "SourceId": "QuanLyBanVeBenXeMienDong",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\",
+      "BasePath": "_content/QuanLyBanVeBenXeMienDong",
+      "RelativePath": "times#[.{fingerprint}]?.ttf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lb3eadzrnw",
+      "Integrity": "UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\times.ttf"
     }
   ],
   "Endpoints": [
@@ -6710,6 +6731,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-bF6Wp5GDiDHJjEi4E7vGMHBzUyZ/Q2ExgOrpqRos5ws="
+        }
+      ]
+    },
+    {
+      "Route": "times.lb3eadzrnw.ttf",
+      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\times.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347988"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 03 Jun 2021 11:55:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lb3eadzrnw"
+        },
+        {
+          "Name": "label",
+          "Value": "times.ttf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo="
+        }
+      ]
+    },
+    {
+      "Route": "times.ttf",
+      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\times.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347988"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 03 Jun 2021 11:55:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo="
         }
       ]
     }

@@ -1,0 +1,79 @@
+﻿@using System.Globalization
+@model List<QuanLyBanVeBenXeMienDong.Models.Data.VeXe>
+
+<h2>Báo cáo doanh thu</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="mb-3">
+    <form asp-action="RevenueReport" method="get" class="form-inline">
+        <div class="form-group mr-2">
+            <label for="startDate" class="mr-2">Từ ngày:</label>
+            <input type="date" name="startDate" class="form-control" 
+                   value="@(ViewBag.StartDate != null ? DateTime.Parse(ViewBag.StartDate, CultureInfo.CreateSpecificCulture("vi-VN")).ToString("yyyy-MM-dd") : new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="form-group mr-2">
+            <label for="endDate" class="mr-2">Đến ngày:</label>
+            <input type="date" name="endDate" class="form-control" 
+                   value="@(ViewBag.EndDate != null ? DateTime.Parse(ViewBag.EndDate, CultureInfo.CreateSpecificCulture("vi-VN")).ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd"))" />
+        </div>
+        <button type="submit" class="btn btn-primary">Lọc</button>
+        <a asp-action="ExportToExcel" asp-route-startDate="@ViewBag.StartDate" asp-route-endDate="@ViewBag.EndDate" class="btn btn-success ml-2">Xuất Excel</a>
+        <a asp-action="ExportToPdf" asp-route-startDate="@ViewBag.StartDate" asp-route-endDate="@ViewBag.EndDate" class="btn btn-danger ml-2">Xuất PDF</a>
+    </form>
+</div>
+
+<div class="mb-3">
+    <h4>Danh sách vé từ @ViewBag.StartDate đến @ViewBag.EndDate</h4>
+    @if (Model.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mã vé</th>
+                    <th>Chuyến xe</th>
+                    <th>Khách hàng</th>
+                    <th>Ghế</th>
+                    <th>Số lượng vé</th>
+                    <th>Trạng thái</th>
+                    <th>Ngày đặt</th>
+                    <th>Doanh thu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var veXe in Model)
+                {
+                    <tr>
+                        <td>@veXe.MaVeXe</td>
+                        <td>@veXe.MaChuyen</td>
+                        <td>@(veXe.KhachHang?.HovaTen ?? "Không xác định") (@veXe.MaKh)</td>
+                        <td>@veXe.MaSoGhe</td>
+                        <td>@veXe.SoLuongVe</td>
+                        <td>@veXe.TrangThai</td>
+                        <td>@veXe.NgayDatVe.ToString("dd/MM/yyyy HH:mm:ss.fff")</td>
+                        <td>@((veXe.SoLuongVe * (veXe.ChuyenXe?.Gia ?? 100000)).ToString("N0")) VNĐ</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7" class="text-right"><strong>Tổng doanh thu:</strong></td>
+                    <td><strong>@ViewBag.TotalRevenue.ToString("N0") VNĐ</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    else
+    {
+        <p>Không có vé nào trong khoảng thời gian này.</p>
+    }
+</div>
+
+<a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Quay lại</a>

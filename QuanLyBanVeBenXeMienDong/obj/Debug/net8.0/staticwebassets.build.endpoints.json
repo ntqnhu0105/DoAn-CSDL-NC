@@ -5249,6 +5249,88 @@
           "Value": "sha256-OZVI+w57FGwS9boYCZpH1ZSpcP7pYhLu4KtIUvPlZ4I="
         }
       ]
+    },
+    {
+      "Route": "times.lb3eadzrnw.ttf",
+      "AssetFile": "times.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347988"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 03 Jun 2021 11:55:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lb3eadzrnw"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo="
+        },
+        {
+          "Name": "label",
+          "Value": "times.ttf"
+        }
+      ]
+    },
+    {
+      "Route": "times.ttf",
+      "AssetFile": "times.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347988"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 03 Jun 2021 11:55:30 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UZZrJ86dWj9YvEiQuYvdCO/ZaDuSZSUd2vCbiWWoSeo="
+        }
+      ]
     }
   ]
 }
