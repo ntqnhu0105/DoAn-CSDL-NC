@@ -189,6 +189,10 @@ namespace QuanLyBanVeBenXeMienDong.Models.System
                 .HasOne(h => h.KhachHang)
                 .WithMany()
                 .HasForeignKey(h => h.MaKh);
+            modelBuilder.Entity<SoGheSoGiuong>()
+            .HasOne(s => s.Xe)
+            .WithMany(x => x.SoGheSoGiuongs) // Thêm ICollection<SoGheSoGiuong> SoGheSoGiuongs vào model Xe nếu cần
+            .HasForeignKey(s => s.MaXe);
             modelBuilder.Entity<NhanVien>().HasData( 
                 new NhanVien
                 {
@@ -247,20 +251,19 @@ namespace QuanLyBanVeBenXeMienDong.Models.System
                 new TuyenXe { MaTuyen = "TX009", DiemDi = "Đà Nẵng", DiemDen = "Quảng Ngãi", KhoangCach = 120m, ThoiGianDuKien = TimeSpan.FromHours(2.5), MoTa = "Tuyến miền Trung nhanh chóng", GiaThamKhao = 130000m }
             );
 
-            // Dữ liệu mẫu cho ChuyenXe
             modelBuilder.Entity<ChuyenXe>().HasData(
-                new ChuyenXe { MaChuyen = "CX001", MaTuyen = "TX001", MaXe = "XE001", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = TimeSpan.FromHours(7), Gia = 250000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX002", MaTuyen = "TX002", MaXe = "XE002", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = TimeSpan.FromHours(9), Gia = 100000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX003", MaTuyen = "TX003", MaXe = "XE003", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = TimeSpan.FromHours(14), Gia = 120000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX004", MaTuyen = "TX004", MaXe = "XE004", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = TimeSpan.FromHours(8), Gia = 300000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX005", MaTuyen = "TX005", MaXe = "XE005", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = TimeSpan.FromHours(20), Gia = 280000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX006", MaTuyen = "TX006", MaXe = "XE006", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = TimeSpan.FromHours(13), Gia = 150000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX007", MaTuyen = "TX002", MaXe = "XE002", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = TimeSpan.FromHours(15), Gia = 100000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX008", MaTuyen = "TX001", MaXe = "XE001", NgayKhoiHanh = DateTime.Now.AddDays(3), GioKhoiHanh = TimeSpan.FromHours(10), Gia = 250000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX009", MaTuyen = "TX004", MaXe = "XE004", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = TimeSpan.FromHours(17), Gia = 300000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX010", MaTuyen = "TX007", MaXe = "XE007", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = TimeSpan.FromHours(5), Gia = 280000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX011", MaTuyen = "TX008", MaXe = "XE008", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = TimeSpan.FromHours(14), Gia = 150000m, TrangThai = "Chưa khởi hành" },
-                new ChuyenXe { MaChuyen = "CX012", MaTuyen = "TX009", MaXe = "XE009", NgayKhoiHanh = DateTime.Now.AddDays(3), GioKhoiHanh = TimeSpan.FromHours(8), Gia = 130000m, TrangThai = "Chưa khởi hành" }
+                new ChuyenXe { MaChuyen = "CX001", MaTuyen = "TX001", MaXe = "XE001", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = "07:00", Gia = 250000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX002", MaTuyen = "TX002", MaXe = "XE002", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = "09:00", Gia = 100000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX003", MaTuyen = "TX003", MaXe = "XE003", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = "14:00", Gia = 120000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX004", MaTuyen = "TX004", MaXe = "XE004", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = "08:00", Gia = 300000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX005", MaTuyen = "TX005", MaXe = "XE005", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = "20:00", Gia = 280000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX006", MaTuyen = "TX006", MaXe = "XE006", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = "13:00", Gia = 150000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX007", MaTuyen = "TX002", MaXe = "XE002", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = "15:00", Gia = 100000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX008", MaTuyen = "TX001", MaXe = "XE001", NgayKhoiHanh = DateTime.Now.AddDays(3), GioKhoiHanh = "10:00", Gia = 250000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX009", MaTuyen = "TX004", MaXe = "XE004", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = "17:00", Gia = 300000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX010", MaTuyen = "TX007", MaXe = "XE007", NgayKhoiHanh = DateTime.Now.AddDays(1), GioKhoiHanh = "05:00", Gia = 280000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX011", MaTuyen = "TX008", MaXe = "XE008", NgayKhoiHanh = DateTime.Now.AddDays(2), GioKhoiHanh = "14:00", Gia = 150000m, TrangThai = "Chưa khởi hành" },
+                new ChuyenXe { MaChuyen = "CX012", MaTuyen = "TX009", MaXe = "XE009", NgayKhoiHanh = DateTime.Now.AddDays(3), GioKhoiHanh = "08:00", Gia = 130000m, TrangThai = "Chưa khởi hành" }
             );
 
             // Dữ liệu mẫu cho SoGheSoGiuong

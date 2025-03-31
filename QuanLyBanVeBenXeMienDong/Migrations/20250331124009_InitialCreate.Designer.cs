@@ -12,7 +12,7 @@ using QuanLyBanVeBenXeMienDong.Models.System;
 namespace QuanLyBanVeBenXeMienDong.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250330061041_InitialCreate")]
+    [Migration("20250331124009_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -167,8 +167,9 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                     b.Property<decimal>("Gia")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<TimeSpan>("GioKhoiHanh")
-                        .HasColumnType("time");
+                    b.Property<string>("GioKhoiHanh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaTuyen")
                         .IsRequired()
@@ -201,120 +202,120 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                         {
                             MaChuyen = "CX001",
                             Gia = 250000m,
-                            GioKhoiHanh = new TimeSpan(0, 7, 0, 0, 0),
+                            GioKhoiHanh = "07:00",
                             MaTuyen = "TX001",
                             MaXe = "XE001",
-                            NgayKhoiHanh = new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(8976),
+                            NgayKhoiHanh = new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8017),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX002",
                             Gia = 100000m,
-                            GioKhoiHanh = new TimeSpan(0, 9, 0, 0, 0),
+                            GioKhoiHanh = "09:00",
                             MaTuyen = "TX002",
                             MaXe = "XE002",
-                            NgayKhoiHanh = new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(8998),
+                            NgayKhoiHanh = new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8046),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX003",
                             Gia = 120000m,
-                            GioKhoiHanh = new TimeSpan(0, 14, 0, 0, 0),
+                            GioKhoiHanh = "14:00",
                             MaTuyen = "TX003",
                             MaXe = "XE003",
-                            NgayKhoiHanh = new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9001),
+                            NgayKhoiHanh = new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8048),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX004",
                             Gia = 300000m,
-                            GioKhoiHanh = new TimeSpan(0, 8, 0, 0, 0),
+                            GioKhoiHanh = "08:00",
                             MaTuyen = "TX004",
                             MaXe = "XE004",
-                            NgayKhoiHanh = new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9003),
+                            NgayKhoiHanh = new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8050),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX005",
                             Gia = 280000m,
-                            GioKhoiHanh = new TimeSpan(0, 20, 0, 0, 0),
+                            GioKhoiHanh = "20:00",
                             MaTuyen = "TX005",
                             MaXe = "XE005",
-                            NgayKhoiHanh = new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9006),
+                            NgayKhoiHanh = new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8053),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX006",
                             Gia = 150000m,
-                            GioKhoiHanh = new TimeSpan(0, 13, 0, 0, 0),
+                            GioKhoiHanh = "13:00",
                             MaTuyen = "TX006",
                             MaXe = "XE006",
-                            NgayKhoiHanh = new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9008),
+                            NgayKhoiHanh = new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8056),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX007",
                             Gia = 100000m,
-                            GioKhoiHanh = new TimeSpan(0, 15, 0, 0, 0),
+                            GioKhoiHanh = "15:00",
                             MaTuyen = "TX002",
                             MaXe = "XE002",
-                            NgayKhoiHanh = new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9010),
+                            NgayKhoiHanh = new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8058),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX008",
                             Gia = 250000m,
-                            GioKhoiHanh = new TimeSpan(0, 10, 0, 0, 0),
+                            GioKhoiHanh = "10:00",
                             MaTuyen = "TX001",
                             MaXe = "XE001",
-                            NgayKhoiHanh = new DateTime(2025, 4, 2, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9012),
+                            NgayKhoiHanh = new DateTime(2025, 4, 3, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8060),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX009",
                             Gia = 300000m,
-                            GioKhoiHanh = new TimeSpan(0, 17, 0, 0, 0),
+                            GioKhoiHanh = "17:00",
                             MaTuyen = "TX004",
                             MaXe = "XE004",
-                            NgayKhoiHanh = new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9014),
+                            NgayKhoiHanh = new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8062),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX010",
                             Gia = 280000m,
-                            GioKhoiHanh = new TimeSpan(0, 5, 0, 0, 0),
+                            GioKhoiHanh = "05:00",
                             MaTuyen = "TX007",
                             MaXe = "XE007",
-                            NgayKhoiHanh = new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9016),
+                            NgayKhoiHanh = new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8064),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX011",
                             Gia = 150000m,
-                            GioKhoiHanh = new TimeSpan(0, 14, 0, 0, 0),
+                            GioKhoiHanh = "14:00",
                             MaTuyen = "TX008",
                             MaXe = "XE008",
-                            NgayKhoiHanh = new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9018),
+                            NgayKhoiHanh = new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8066),
                             TrangThai = "Chưa khởi hành"
                         },
                         new
                         {
                             MaChuyen = "CX012",
                             Gia = 130000m,
-                            GioKhoiHanh = new TimeSpan(0, 8, 0, 0, 0),
+                            GioKhoiHanh = "08:00",
                             MaTuyen = "TX009",
                             MaXe = "XE009",
-                            NgayKhoiHanh = new DateTime(2025, 4, 2, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9020),
+                            NgayKhoiHanh = new DateTime(2025, 4, 3, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8069),
                             TrangThai = "Chưa khởi hành"
                         });
                 });
@@ -810,12 +811,17 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("ChuyenXeMaChuyen")
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("TrangThai")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("MaSoGhe", "MaXe", "MaChuyen");
+
+                    b.HasIndex("ChuyenXeMaChuyen");
 
                     b.HasIndex("MaChuyen");
 
@@ -1208,6 +1214,9 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("ChuyenXeMaChuyen")
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("MANV")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -1248,6 +1257,8 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("MaVeXe");
+
+                    b.HasIndex("ChuyenXeMaChuyen");
 
                     b.HasIndex("MANV");
 
@@ -1305,17 +1316,14 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
 
                     b.Property<string>("BienSoXe")
                         .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MaLoai")
                         .IsRequired()
-                        .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("MaNhaXe")
                         .IsRequired()
-                        .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("MaXe");
@@ -1672,6 +1680,10 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
 
             modelBuilder.Entity("QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong", b =>
                 {
+                    b.HasOne("QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe", null)
+                        .WithMany("SoGheSoGiuongs")
+                        .HasForeignKey("ChuyenXeMaChuyen");
+
                     b.HasOne("QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe", "ChuyenXe")
                         .WithMany()
                         .HasForeignKey("MaChuyen")
@@ -1679,7 +1691,7 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                         .IsRequired();
 
                     b.HasOne("QuanLyBanVeBenXeMienDong.Models.Data.Xe", "Xe")
-                        .WithMany()
+                        .WithMany("SoGheSoGiuongs")
                         .HasForeignKey("MaXe")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1718,6 +1730,10 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
 
             modelBuilder.Entity("QuanLyBanVeBenXeMienDong.Models.Data.VeXe", b =>
                 {
+                    b.HasOne("QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe", null)
+                        .WithMany("VeXes")
+                        .HasForeignKey("ChuyenXeMaChuyen");
+
                     b.HasOne("QuanLyBanVeBenXeMienDong.Models.Data.NhanVien", "NhanVien")
                         .WithMany()
                         .HasForeignKey("MANV")
@@ -1788,9 +1804,21 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                     b.Navigation("NhaXe");
                 });
 
+            modelBuilder.Entity("QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe", b =>
+                {
+                    b.Navigation("SoGheSoGiuongs");
+
+                    b.Navigation("VeXes");
+                });
+
             modelBuilder.Entity("QuanLyBanVeBenXeMienDong.Models.Data.VeXe", b =>
                 {
                     b.Navigation("VeXe_SoGhes");
+                });
+
+            modelBuilder.Entity("QuanLyBanVeBenXeMienDong.Models.Data.Xe", b =>
+                {
+                    b.Navigation("SoGheSoGiuongs");
                 });
 #pragma warning restore 612, 618
         }

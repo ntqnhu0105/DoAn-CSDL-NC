@@ -28,18 +28,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="DatVe" asp-action="LichSuDatVe">Lịch sử đặt vé</a>
                         </li>
+                        @if (User.IsInRole("NhanVien"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="QuanLyChuyenXe" asp-action="Index">Quản lý chuyến xe</a>
+                            </li>
+                        }
                     </ul>
                     <div class="navbar">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                <span class="nav-link">Xin chào, @User.Identity.Name</span>
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
-                                        }
-                                        else
-                                        {
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Đăng nhập</a>
-                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Đăng ký</a>
-                                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span class="nav-link">Xin chào, @User.Identity.Name</span>
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Đăng ký</a>
+                        }
                     </div>
                 </div>
             </div>
@@ -53,7 +59,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - QuanLyBanVeBenXeMienDong - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            © 2025 - QuanLyBanVeBenXeMienDong - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

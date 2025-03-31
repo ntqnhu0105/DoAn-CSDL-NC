@@ -54,15 +54,30 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(email, password, false, false);
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                ModelState.AddModelError("", "Vui lòng nhập email và mật khẩu.");
+                return View();
+            }
+
+            // Tìm user bằng email
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email không tồn tại.");
+                return View();
+            }
+
+            // Đăng nhập bằng UserName của user
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, password, isPersistent: false, lockoutOnFailure: false);
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("", "Đăng nhập thất bại.");
+
+            ModelState.AddModelError("", "Mật khẩu không đúng.");
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
