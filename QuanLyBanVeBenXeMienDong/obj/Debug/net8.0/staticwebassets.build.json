@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BOZhDv4J+xxYzGdCXtBfpYfixUfel704YEmJl7XL73Q=",
+  "Hash": "kJacaW+HPbIonQIpKlBlePbK32Af/BrAzi5SaJBj4KU=",
   "Source": "QuanLyBanVeBenXeMienDong",
   "BasePath": "_content/QuanLyBanVeBenXeMienDong",
   "Mode": "Default",
@@ -141,6 +141,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\DatVe\\Book.js"
+    },
+    {
+      "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
+      "SourceId": "QuanLyBanVeBenXeMienDong",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\",
+      "BasePath": "_content/QuanLyBanVeBenXeMienDong",
+      "RelativePath": "js/QuanLyVeXe/Edit#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ekftjg4kw5",
+      "Integrity": "DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\QuanLyVeXe\\Edit.js"
     },
     {
       "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\site.js",
@@ -1687,6 +1708,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws="
+        }
+      ]
+    },
+    {
+      "Route": "js/QuanLyVeXe/Edit.ekftjg4kw5.js",
+      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1545"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 16:22:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ekftjg4kw5"
+        },
+        {
+          "Name": "label",
+          "Value": "js/QuanLyVeXe/Edit.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q="
+        }
+      ]
+    },
+    {
+      "Route": "js/QuanLyVeXe/Edit.js",
+      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1545"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 16:22:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q="
         }
       ]
     },

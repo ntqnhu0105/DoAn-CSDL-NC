@@ -48,6 +48,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rd2f1c0u9h"},{"Name":"integrity","Value":"sha256-MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws="},{"Name":"label","Value":"_content/QuanLyBanVeBenXeMienDong/js/DatVe/Book.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"704"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws=\u0022"},{"Name":"Last-Modified","Value":"Sun, 30 Mar 2025 05:40:58 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/QuanLyVeXe/Edit.ekftjg4kw5.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\QuanLyVeXe\Edit.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ekftjg4kw5"},{"Name":"integrity","Value":"sha256-DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q="},{"Name":"label","Value":"_content/QuanLyBanVeBenXeMienDong/js/QuanLyVeXe/Edit.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1545"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 16:22:23 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/QuanLyVeXe/Edit.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\QuanLyVeXe\Edit.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1545"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022DmdDrK37pbVnRs9koN97fXg684lwAWjEyVempDTJP8Q=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 16:22:23 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

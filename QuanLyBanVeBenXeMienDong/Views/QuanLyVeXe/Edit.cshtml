@@ -1,0 +1,55 @@
+﻿@model QuanLyBanVeBenXeMienDong.Models.Data.VeXe
+
+<h2>Sửa vé xe</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<form asp-controller="QuanLyVeXe" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="MaVeXe" />
+    <input type="hidden" asp-for="MANV" />
+    <input type="hidden" asp-for="NgayDatVe" />
+    <div class="form-group">
+        <label>Chuyến xe</label>
+        <select asp-for="MaChuyen" class="form-control" id="chuyenXeDropdown" asp-items="ViewBag.ChuyenXes" required></select>
+        <span asp-validation-for="MaChuyen" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Khách hàng</label>
+        <select asp-for="MaKh" class="form-control" asp-items="ViewBag.KhachHangs" required></select>
+        <span asp-validation-for="MaKh" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã ghế</label>
+        <select asp-for="MaSoGhe" class="form-control" id="gheDropdown" asp-items="@(new SelectList(ViewBag.SoGheSoGiuongs, "MaSoGhe", "MaSoGhe"))" required></select>
+        <span asp-validation-for="MaSoGhe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã xe</label>
+        <input asp-for="MaXe" class="form-control" id="maXeInput" readonly required />
+        <span asp-validation-for="MaXe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Số lượng vé</label>
+        <input asp-for="SoLuongVe" class="form-control" required />
+        <span asp-validation-for="SoLuongVe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Trạng thái</label>
+        <input asp-for="TrangThai" class="form-control" readonly required />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/QuanLyVeXe/Edit.js"></script>
+}

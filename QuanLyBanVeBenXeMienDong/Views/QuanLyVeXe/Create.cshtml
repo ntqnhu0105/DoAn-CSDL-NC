@@ -1,0 +1,42 @@
+﻿@model QuanLyBanVeBenXeMienDong.Models.Data.VeXe
+
+<h2>Thêm vé mới</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Mã vé xe</label>
+        <input asp-for="MaVeXe" class="form-control" required />
+        <span asp-validation-for="MaVeXe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã chuyến</label>
+        <select asp-for="MaChuyen" class="form-control" asp-items="@(new SelectList(ViewBag.ChuyenXes, "MaChuyen", "MaChuyen"))" required></select>
+        <span asp-validation-for="MaChuyen" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã khách hàng</label>
+        <input asp-for="MaKh" class="form-control" required />
+        <span asp-validation-for="MaKh" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã ghế</label>
+        <select asp-for="MaSoGhe" class="form-control" asp-items="@(new SelectList(ViewBag.SoGheSoGiuongs, "MaSoGhe", "MaSoGhe"))" required></select>
+        <span asp-validation-for="MaSoGhe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Mã xe</label>
+        <input asp-for="MaXe" class="form-control" required />
+        <span asp-validation-for="MaXe" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Số lượng vé</label>
+        <input asp-for="SoLuongVe" class="form-control" required />
+        <span asp-validation-for="SoLuongVe" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm vé</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

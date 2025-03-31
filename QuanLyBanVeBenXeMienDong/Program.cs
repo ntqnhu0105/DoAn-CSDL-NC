@@ -3,6 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using QuanLyBanVeBenXeMienDong.Models.System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/Account/Login"; // Đường dẫn đăng nhập
+        options.AccessDeniedPath = "/Account/AccessDenied"; // Đường dẫn khi bị từ chối
+    });
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[] { new System.Globalization.CultureInfo("en-US") };

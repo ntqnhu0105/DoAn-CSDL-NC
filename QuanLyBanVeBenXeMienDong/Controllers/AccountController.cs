@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using QuanLyBanVeBenXeMienDong.Models;
 using QuanLyBanVeBenXeMienDong.Models.System;
@@ -79,6 +80,7 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

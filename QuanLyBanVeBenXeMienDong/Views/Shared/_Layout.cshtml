@@ -39,7 +39,9 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <span class="nav-link">Xin chào, @User.Identity.Name</span>
-                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
+                             <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit" class="btn btn-link">Đăng xuất</button>
+                            </form>
                         }
                         else
                         {
