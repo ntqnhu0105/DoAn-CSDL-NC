@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ec32o9k4y1</Fingerprint>
-      <Integrity>kmbbIJy2wMWTE/7qv5HihAVLqyOmfZZgPYu1lMig3NM=</Integrity>
+      <Fingerprint>5j09l3gwce</Fingerprint>
+      <Integrity>8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\DatVe\Book.css'))</OriginalItemSpec>
@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rd2f1c0u9h</Fingerprint>
-      <Integrity>MXUzy4u9rmuasJKgyinOZ2ke7PHqxr9vfiSGSL9Krws=</Integrity>
+      <Fingerprint>q5000ymvwm</Fingerprint>
+      <Integrity>zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\DatVe\Book.js'))</OriginalItemSpec>
