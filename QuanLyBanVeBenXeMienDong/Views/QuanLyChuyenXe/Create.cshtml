@@ -1,0 +1,68 @@
+﻿@model QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe
+
+@{
+    ViewData["Title"] = "Thêm chuyến xe mới";
+}
+
+<div class="container mt-4">
+    <h2>Thêm chuyến xe mới</h2>
+    @if (TempData["ErrorMessage"] != null)
+    {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label>Tuyến xe</label>
+            <select asp-for="MaTuyen" class="form-control" required>
+                <option value="">Chọn tuyến xe</option>
+                @foreach (var tuyen in ViewBag.TuyenXes)
+                {
+                        <option value="@tuyen.MaTuyen">@tuyen.DiemDi - @tuyen.DiemDen</option>
+                }
+            </select>
+            <span asp-validation-for="MaTuyen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Xe</label>
+            <select asp-for="MaXe" class="form-control" required>
+                <option value="">Chọn xe</option>
+                @foreach (var xe in ViewBag.Xes)
+                {
+                        <option value="@xe.MaXe">@xe.BienSoXe (@xe.LoaiXe?.TenLoai)</option>
+                }
+            </select>
+            <span asp-validation-for="MaXe" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Ngày khởi hành</label>
+            <input asp-for="NgayKhoiHanh" class="form-control" type="date" required />
+            <span asp-validation-for="NgayKhoiHanh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Giờ khởi hành</label>
+            <input asp-for="GioKhoiHanh" class="form-control" type="text" placeholder="HH:mm" required pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$" title="Nhập giờ theo định dạng HH:mm (24h)" />
+            <span asp-validation-for="GioKhoiHanh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Giá (VNĐ)</label>
+            <input asp-for="Gia" class="form-control" type="number" step="1000" min="0" required />
+            <span asp-validation-for="Gia" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Trạng thái</label>
+            <select asp-for="TrangThai" class="form-control" required>
+                <option value="Chưa khởi hành">Chưa khởi hành</option>
+                <option value="Đã khởi hành">Đã khởi hành</option>
+                <option value="Hủy">Hủy</option>
+            </select>
+            <span asp-validation-for="TrangThai" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

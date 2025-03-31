@@ -7,21 +7,11 @@ namespace QuanLyBanVeBenXeMienDong.Models.Data
         [Key]
         [StringLength(10)]
         public string MaXe { get; set; }
-
-        [Required]
-        [StringLength(12)]
         public string BienSoXe { get; set; }
-
-        [Required]
-        [StringLength(10)]
         public string MaLoai { get; set; }
-
-        [Required]
-        [StringLength(10)]
         public string MaNhaXe { get; set; }
-
-        // Navigation properties
         public LoaiXe LoaiXe { get; set; }
         public NhaXe NhaXe { get; set; }
+        public ICollection<SoGheSoGiuong> SoGheSoGiuongs { get; set; } // Add this line
     }
 }

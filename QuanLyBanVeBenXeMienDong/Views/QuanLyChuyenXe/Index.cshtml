@@ -1,0 +1,70 @@
+﻿@model List<QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe>
+
+@{
+    ViewData["Title"] = "Quản lý chuyến xe";
+}
+
+<div class="container mt-4">
+    <h2>Quản lý chuyến xe</h2>
+    @if (TempData["SuccessMessage"] != null)
+    {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+    <a asp-action="Create" class="btn btn-primary mb-3">Thêm chuyến xe mới</a>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã chuyến</th>
+                        <th>Tuyến xe</th>
+                        <th>Ngày khởi hành</th>
+                        <th>Giờ khởi hành</th>
+                        <th>Xe</th>
+                        <th>Giá (VNĐ)</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var chuyen in Model)
+                    {
+                            <tr>
+                                <td>@chuyen.MaChuyen</td>
+                                <td>@chuyen.TuyenXe.DiemDi - @chuyen.TuyenXe.DiemDen</td>
+                                <td>@chuyen.NgayKhoiHanh.ToString("dd/MM/yyyy")</td>
+                                <td>@chuyen.GioKhoiHanh</td>
+                                <td>@chuyen.Xe.BienSoXe (@chuyen.Xe.LoaiXe?.TenLoai)</td>
+                                <td>@chuyen.Gia.ToString("N0")</td>
+                                <td>@chuyen.TrangThai</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-maChuyen="@chuyen.MaChuyen" class="btn btn-warning btn-sm">Sửa</a>
+                                    <form asp-action="Delete" asp-route-maChuyen="@chuyen.MaChuyen" method="post" style="display:inline;" onsubmit="return confirmDelete(event, '@chuyen.MaChuyen');">
+                                    @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                    </form>
+                                </td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Quay về trang chủ</a>
+</div>
+
+@section Scripts {
+        <script>
+            function confirmDelete(event, maChuyen) {
+                if (!confirm(`Bạn có chắc chắn muốn xóa chuyến xe ${maChuyen} không?`)) {
+                    event.preventDefault();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+}

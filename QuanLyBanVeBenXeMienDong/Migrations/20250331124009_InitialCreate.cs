@@ -286,9 +286,9 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                 columns: table => new
                 {
                     MaXe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    BienSoXe = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    MaLoai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    MaNhaXe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    BienSoXe = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaLoai = table.Column<string>(type: "nvarchar(10)", nullable: false),
+                    MaNhaXe = table.Column<string>(type: "nvarchar(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -361,7 +361,7 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                     MaTuyen = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MaXe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     NgayKhoiHanh = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GioKhoiHanh = table.Column<TimeSpan>(type: "time", nullable: false),
+                    GioKhoiHanh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gia = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TrangThai = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
@@ -473,11 +473,17 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                     MaSoGhe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MaXe = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     MaChuyen = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    TrangThai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    TrangThai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    ChuyenXeMaChuyen = table.Column<string>(type: "nvarchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SoGheSoGiuongs", x => new { x.MaSoGhe, x.MaXe, x.MaChuyen });
+                    table.ForeignKey(
+                        name: "FK_SoGheSoGiuongs_ChuyenXes_ChuyenXeMaChuyen",
+                        column: x => x.ChuyenXeMaChuyen,
+                        principalTable: "ChuyenXes",
+                        principalColumn: "MaChuyen");
                     table.ForeignKey(
                         name: "FK_SoGheSoGiuongs_ChuyenXes_MaChuyen",
                         column: x => x.MaChuyen,
@@ -504,11 +510,17 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                     MaKhuyenMai = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     NgayDatVe = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TrangThai = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    SoLuongVe = table.Column<int>(type: "int", nullable: false)
+                    SoLuongVe = table.Column<int>(type: "int", nullable: false),
+                    ChuyenXeMaChuyen = table.Column<string>(type: "nvarchar(10)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VeXes", x => x.MaVeXe);
+                    table.ForeignKey(
+                        name: "FK_VeXes_ChuyenXes_ChuyenXeMaChuyen",
+                        column: x => x.ChuyenXeMaChuyen,
+                        principalTable: "ChuyenXes",
+                        principalColumn: "MaChuyen");
                     table.ForeignKey(
                         name: "FK_VeXes_ChuyenXes_MaChuyen",
                         column: x => x.MaChuyen,
@@ -693,48 +705,48 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                 columns: new[] { "MaChuyen", "Gia", "GioKhoiHanh", "MaTuyen", "MaXe", "NgayKhoiHanh", "TrangThai" },
                 values: new object[,]
                 {
-                    { "CX001", 250000m, new TimeSpan(0, 7, 0, 0, 0), "TX001", "XE001", new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(8976), "Chưa khởi hành" },
-                    { "CX002", 100000m, new TimeSpan(0, 9, 0, 0, 0), "TX002", "XE002", new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(8998), "Chưa khởi hành" },
-                    { "CX003", 120000m, new TimeSpan(0, 14, 0, 0, 0), "TX003", "XE003", new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9001), "Chưa khởi hành" },
-                    { "CX004", 300000m, new TimeSpan(0, 8, 0, 0, 0), "TX004", "XE004", new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9003), "Chưa khởi hành" },
-                    { "CX005", 280000m, new TimeSpan(0, 20, 0, 0, 0), "TX005", "XE005", new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9006), "Chưa khởi hành" },
-                    { "CX006", 150000m, new TimeSpan(0, 13, 0, 0, 0), "TX006", "XE006", new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9008), "Chưa khởi hành" },
-                    { "CX007", 100000m, new TimeSpan(0, 15, 0, 0, 0), "TX002", "XE002", new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9010), "Chưa khởi hành" },
-                    { "CX008", 250000m, new TimeSpan(0, 10, 0, 0, 0), "TX001", "XE001", new DateTime(2025, 4, 2, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9012), "Chưa khởi hành" },
-                    { "CX009", 300000m, new TimeSpan(0, 17, 0, 0, 0), "TX004", "XE004", new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9014), "Chưa khởi hành" },
-                    { "CX010", 280000m, new TimeSpan(0, 5, 0, 0, 0), "TX007", "XE007", new DateTime(2025, 3, 31, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9016), "Chưa khởi hành" },
-                    { "CX011", 150000m, new TimeSpan(0, 14, 0, 0, 0), "TX008", "XE008", new DateTime(2025, 4, 1, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9018), "Chưa khởi hành" },
-                    { "CX012", 130000m, new TimeSpan(0, 8, 0, 0, 0), "TX009", "XE009", new DateTime(2025, 4, 2, 13, 10, 40, 462, DateTimeKind.Local).AddTicks(9020), "Chưa khởi hành" }
+                    { "CX001", 250000m, "07:00", "TX001", "XE001", new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8017), "Chưa khởi hành" },
+                    { "CX002", 100000m, "09:00", "TX002", "XE002", new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8046), "Chưa khởi hành" },
+                    { "CX003", 120000m, "14:00", "TX003", "XE003", new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8048), "Chưa khởi hành" },
+                    { "CX004", 300000m, "08:00", "TX004", "XE004", new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8050), "Chưa khởi hành" },
+                    { "CX005", 280000m, "20:00", "TX005", "XE005", new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8053), "Chưa khởi hành" },
+                    { "CX006", 150000m, "13:00", "TX006", "XE006", new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8056), "Chưa khởi hành" },
+                    { "CX007", 100000m, "15:00", "TX002", "XE002", new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8058), "Chưa khởi hành" },
+                    { "CX008", 250000m, "10:00", "TX001", "XE001", new DateTime(2025, 4, 3, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8060), "Chưa khởi hành" },
+                    { "CX009", 300000m, "17:00", "TX004", "XE004", new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8062), "Chưa khởi hành" },
+                    { "CX010", 280000m, "05:00", "TX007", "XE007", new DateTime(2025, 4, 1, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8064), "Chưa khởi hành" },
+                    { "CX011", 150000m, "14:00", "TX008", "XE008", new DateTime(2025, 4, 2, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8066), "Chưa khởi hành" },
+                    { "CX012", 130000m, "08:00", "TX009", "XE009", new DateTime(2025, 4, 3, 19, 40, 8, 694, DateTimeKind.Local).AddTicks(8069), "Chưa khởi hành" }
                 });
 
             migrationBuilder.InsertData(
                 table: "SoGheSoGiuongs",
-                columns: new[] { "MaChuyen", "MaSoGhe", "MaXe", "TrangThai" },
+                columns: new[] { "MaChuyen", "MaSoGhe", "MaXe", "ChuyenXeMaChuyen", "TrangThai" },
                 values: new object[,]
                 {
-                    { "CX001", "A01", "XE001", "Trống" },
-                    { "CX001", "A02", "XE001", "Trống" },
-                    { "CX001", "A03", "XE001", "Trống" },
-                    { "CX008", "A04", "XE001", "Trống" },
-                    { "CX002", "B01", "XE002", "Trống" },
-                    { "CX002", "B02", "XE002", "Trống" },
-                    { "CX002", "B03", "XE002", "Trống" },
-                    { "CX007", "B04", "XE002", "Trống" },
-                    { "CX003", "C01", "XE003", "Trống" },
-                    { "CX003", "C02", "XE003", "Trống" },
-                    { "CX004", "D01", "XE004", "Trống" },
-                    { "CX004", "D02", "XE004", "Trống" },
-                    { "CX009", "D03", "XE004", "Trống" },
-                    { "CX005", "E01", "XE005", "Trống" },
-                    { "CX005", "E02", "XE005", "Trống" },
-                    { "CX006", "F01", "XE006", "Trống" },
-                    { "CX006", "F02", "XE006", "Trống" },
-                    { "CX010", "G01", "XE007", "Trống" },
-                    { "CX010", "G02", "XE007", "Trống" },
-                    { "CX011", "H01", "XE008", "Trống" },
-                    { "CX011", "H02", "XE008", "Trống" },
-                    { "CX012", "I01", "XE009", "Trống" },
-                    { "CX012", "I02", "XE009", "Trống" }
+                    { "CX001", "A01", "XE001", null, "Trống" },
+                    { "CX001", "A02", "XE001", null, "Trống" },
+                    { "CX001", "A03", "XE001", null, "Trống" },
+                    { "CX008", "A04", "XE001", null, "Trống" },
+                    { "CX002", "B01", "XE002", null, "Trống" },
+                    { "CX002", "B02", "XE002", null, "Trống" },
+                    { "CX002", "B03", "XE002", null, "Trống" },
+                    { "CX007", "B04", "XE002", null, "Trống" },
+                    { "CX003", "C01", "XE003", null, "Trống" },
+                    { "CX003", "C02", "XE003", null, "Trống" },
+                    { "CX004", "D01", "XE004", null, "Trống" },
+                    { "CX004", "D02", "XE004", null, "Trống" },
+                    { "CX009", "D03", "XE004", null, "Trống" },
+                    { "CX005", "E01", "XE005", null, "Trống" },
+                    { "CX005", "E02", "XE005", null, "Trống" },
+                    { "CX006", "F01", "XE006", null, "Trống" },
+                    { "CX006", "F02", "XE006", null, "Trống" },
+                    { "CX010", "G01", "XE007", null, "Trống" },
+                    { "CX010", "G02", "XE007", null, "Trống" },
+                    { "CX011", "H01", "XE008", null, "Trống" },
+                    { "CX011", "H02", "XE008", null, "Trống" },
+                    { "CX012", "I01", "XE009", null, "Trống" },
+                    { "CX012", "I02", "XE009", null, "Trống" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -847,6 +859,11 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                 column: "MANV");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SoGheSoGiuongs_ChuyenXeMaChuyen",
+                table: "SoGheSoGiuongs",
+                column: "ChuyenXeMaChuyen");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SoGheSoGiuongs_MaChuyen",
                 table: "SoGheSoGiuongs",
                 column: "MaChuyen");
@@ -880,6 +897,11 @@ namespace QuanLyBanVeBenXeMienDong.Migrations
                 name: "IX_VeXe_SoGhes_MaVeXe",
                 table: "VeXe_SoGhes",
                 column: "MaVeXe");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VeXes_ChuyenXeMaChuyen",
+                table: "VeXes",
+                column: "ChuyenXeMaChuyen");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VeXes_MaChuyen",
