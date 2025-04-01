@@ -34,6 +34,22 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 return NotFound("Chuyến xe không tồn tại hoặc không khả dụng.");
             }
 
+            // Lấy thông tin người dùng
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return BadRequest("Không tìm thấy thông tin người dùng.");
+            }
+
+            // Kiểm tra số điện thoại
+            if (string.IsNullOrEmpty(user.PhoneNumber))
+            {
+                ViewBag.ShowPhoneInput = true; // Yêu cầu nhập số điện thoại
+                ViewBag.MaChuyen = maChuyen;
+                return View(chuyenXe);
+            }
+
+            // Nếu đã có số điện thoại, tiếp tục hiển thị sơ đồ ghế
             var gheList = await _context.SoGheSoGiuongs
                 .Where(sg => sg.MaChuyen == maChuyen)
                 .ToListAsync();
@@ -42,16 +58,8 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             ViewBag.GheTangDuoi = gheList.Where(g => g.Tang == 1).OrderBy(g => g.MaSoGhe).ToList();
             ViewBag.GheTangTren = gheList.Where(g => g.Tang == 2).OrderBy(g => g.MaSoGhe).ToList();
 
-            // Lấy số điện thoại của người dùng
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = await _userManager.GetUserAsync(User);
-                ViewBag.Sdt = user?.PhoneNumber ?? "";
-            }
-            else
-            {
-                ViewBag.Sdt = "";
-            }
+            ViewBag.Sdt = user.PhoneNumber;
+            ViewBag.ShowPhoneInput = false; // Không cần nhập số điện thoại
 
             return View(chuyenXe);
         }
@@ -135,6 +143,39 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("ThanhToan", new { maVeXe = veXe.MaVeXe });
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdatePhoneNumber(string maChuyen, string phoneNumber)
+        {
+            if (string.IsNullOrEmpty(phoneNumber))
+            {
+                TempData["Error"] = "Vui lòng nhập số điện thoại.";
+                return RedirectToAction("Book", new { maChuyen });
+            }
+
+            // Kiểm tra định dạng số điện thoại (tùy chọn)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^\d{10}$"))
+            {
+                TempData["Error"] = "Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số.";
+                return RedirectToAction("Book", new { maChuyen });
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return BadRequest("Không tìm thấy thông tin người dùng.");
+            }
+
+            user.PhoneNumber = phoneNumber;
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = "Không thể cập nhật số điện thoại. Vui lòng thử lại.";
+                return RedirectToAction("Book", new { maChuyen });
+            }
+
+            return RedirectToAction("Book", new { maChuyen });
         }
         [Authorize]
         public async Task<IActionResult> ThanhToan(string maVeXe)

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zJzvjhW4dzQU0di6GooCE6sKfGsNZZqIj7+w/nnB8Eg=",
+  "Hash": "1IDhdiVaia5nCKbzLwaBdLiPHYq+jLluwg+EmJlT8+Q=",
   "Source": "QuanLyBanVeBenXeMienDong",
   "BasePath": "_content/QuanLyBanVeBenXeMienDong",
   "Mode": "Default",
@@ -59,27 +59,6 @@
       "OriginalItemSpec": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QuanLyBanVeBenXeMienDong.bundle.scp.css"
     },
     {
-      "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
-      "SourceId": "QuanLyBanVeBenXeMienDong",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\",
-      "BasePath": "_content/QuanLyBanVeBenXeMienDong",
-      "RelativePath": "css/DatVe/Book#[.{fingerprint}]?.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "5j09l3gwce",
-      "Integrity": "8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\DatVe\\Book.css"
-    },
-    {
       "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\site.css",
       "SourceId": "QuanLyBanVeBenXeMienDong",
       "SourceType": "Discovered",
@@ -120,27 +99,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\DatVe\\Book.js",
-      "SourceId": "QuanLyBanVeBenXeMienDong",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\",
-      "BasePath": "_content/QuanLyBanVeBenXeMienDong",
-      "RelativePath": "js/DatVe/Book#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "q5000ymvwm",
-      "Integrity": "zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\DatVe\\Book.js"
     },
     {
       "Identity": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
@@ -1405,88 +1363,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/DatVe/Book.5j09l3gwce.css",
-      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "155"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 23:32:07 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5j09l3gwce"
-        },
-        {
-          "Name": "label",
-          "Value": "css/DatVe/Book.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU="
-        }
-      ]
-    },
-    {
-      "Route": "css/DatVe/Book.css",
-      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "155"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 23:32:07 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-8Yu9idHlf14FcHYmIJgsk0+UXXnqnrnVUpM5hUZwrVU="
-        }
-      ]
-    },
-    {
       "Route": "css/site.c2tiyv64ts.css",
       "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1647,88 +1523,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
-        }
-      ]
-    },
-    {
-      "Route": "js/DatVe/Book.js",
-      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\DatVe\\Book.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "841"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 23:32:00 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k="
-        }
-      ]
-    },
-    {
-      "Route": "js/DatVe/Book.q5000ymvwm.js",
-      "AssetFile": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\DatVe\\Book.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "841"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 23:32:00 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "q5000ymvwm"
-        },
-        {
-          "Name": "label",
-          "Value": "js/DatVe/Book.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zuj26xsQ/Bt+YLyXTUBZA06PtOSMoPt2JRMtzXM++3k="
         }
       ]
     },

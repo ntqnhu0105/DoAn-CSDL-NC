@@ -5,6 +5,7 @@
     ViewData["Title"] = "Chọn ghế - Đặt vé";
     var gheTangDuoi = ViewBag.GheTangDuoi as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
     var gheTangTren = ViewBag.GheTangTren as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
+    bool showPhoneInput = ViewBag.ShowPhoneInput ?? false;
 }
 
 <div class="container mt-4">
@@ -13,99 +14,129 @@
     <p>Ngày khởi hành: @Model.NgayKhoiHanh.ToString("dd/MM/yyyy") | Giờ: @Model.GioKhoiHanh</p>
     <p>Giá vé: @Model.Gia.ToString("N0")đ</p>
 
-    <!-- Chú thích -->
-    <div class="mb-3">
-        <h5>Chú thích</h5>
-        <div class="d-flex align-items-center">
-            <div class="me-3">
-                <span class="badge bg-secondary">X</span> Ghế không bán
-            </div>
-            <div class="me-3">
-                <span class="badge bg-success">✔</span> Đang chọn
-            </div>
-            <div>
-                <span class="badge bg-primary"> </span> Ghế trống
-            </div>
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
         </div>
-    </div>
+    }
 
-    <form asp-action="Book" method="post">
-        <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
-        <input type="hidden" name="maXe" value="@Model.MaXe" />
-        <input type="hidden" name="sdt" value="@ViewBag.Sdt" />
+    @if (showPhoneInput)
+    {
+        <!-- Form nhập số điện thoại -->
         <div class="row">
-            <!-- Tầng dưới -->
             <div class="col-md-6">
-                <h5>Tầng dưới</h5>
-                <div class="d-flex flex-wrap">
-                    @if (gheTangDuoi != null && gheTangDuoi.Any())
-                    {
-                        @foreach (var ghe in gheTangDuoi)
+                <h5>Vui lòng nhập số điện thoại</h5>
+                <form asp-action="UpdatePhoneNumber" method="post">
+                    <input type="hidden" name="maChuyen" value="@ViewBag.MaChuyen" />
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại</label>
+                        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Nhập số điện thoại (10 chữ số)" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Tiếp tục</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Quay lại</a>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Chú thích -->
+        <div class="mb-3">
+            <h5>Chú thích</h5>
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <span class="badge bg-secondary">X</span> Ghế không bán
+                </div>
+                <div class="me-3">
+                    <span class="badge bg-success">✔</span> Đang chọn
+                </div>
+                <div>
+                    <span class="badge bg-primary"> </span> Ghế trống
+                </div>
+            </div>
+        </div>
+
+        <form asp-action="Book" method="post">
+            <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
+            <input type="hidden" name="maXe" value="@Model.MaXe" />
+            <input type="hidden" name="sdt" value="@ViewBag.Sdt" />
+            <div class="row">
+                <!-- Tầng dưới -->
+                <div class="col-md-6">
+                    <h5>Tầng dưới</h5>
+                    <div class="d-flex flex-wrap">
+                        @if (gheTangDuoi != null && gheTangDuoi.Any())
                         {
-                            var cssClass = ghe.TrangThai switch
+                            @foreach (var ghe in gheTangDuoi)
                             {
-                                "Đã đặt" => "bg-secondary text-white",
-                                "Không bán" => "bg-secondary text-white",
-                                _ => "bg-primary"
-                            };
-                                    <div class="m-1">
-                                        <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
-                                @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
-                                        <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
-                                    @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
-                                        </label>
-                                    </div>
+                                var cssClass = ghe.TrangThai switch
+                                {
+                                    "Đã đặt" => "bg-secondary text-white",
+                                    "Không bán" => "bg-secondary text-white",
+                                    _ => "bg-primary"
+                                };
+                                <div class="m-1">
+                                    <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
+                                           @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
+                                    <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
+                                        @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
+                                    </label>
+                                </div>
+                            }
                         }
-                    }
-                    else
-                    {
+                        else
+                        {
                             <p>Không có ghế nào ở tầng dưới.</p>
-                    }
-                </div>
-            </div>
-
-            <!-- Tầng trên -->
-            <div class="col-md-6">
-                <h5>Tầng trên</h5>
-                <div class="d-flex flex-wrap">
-                    @if (gheTangTren != null && gheTangTren.Any())
-                    {
-                        @foreach (var ghe in gheTangTren)
-                        {
-                            var cssClass = ghe.TrangThai switch
-                            {
-                                "Đã đặt" => "bg-secondary text-white",
-                                "Không bán" => "bg-secondary text-white",
-                                _ => "bg-primary"
-                            };
-                                    <div class="m-1">
-                                        <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
-                                @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
-                                        <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
-                                    @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
-                                        </label>
-                                    </div>
                         }
-                    }
-                    else
-                    {
+                    </div>
+                </div>
+
+                <!-- Tầng trên -->
+                <div class="col-md-6">
+                    <h5>Tầng trên</h5>
+                    <div class="d-flex flex-wrap">
+                        @if (gheTangTren != null && gheTangTren.Any())
+                        {
+                            @foreach (var ghe in gheTangTren)
+                            {
+                                var cssClass = ghe.TrangThai switch
+                                {
+                                    "Đã đặt" => "bg-secondary text-white",
+                                    "Không bán" => "bg-secondary text-white",
+                                    _ => "bg-primary"
+                                };
+                                <div class="m-1">
+                                    <input type="checkbox" name="maSoGhe" value="@ghe.MaSoGhe" id="ghe-@ghe.MaSoGhe"
+                                           @(ghe.TrangThai != "Trống" ? "disabled" : "") class="d-none ghe-checkbox" />
+                                    <label for="ghe-@ghe.MaSoGhe" class="btn @cssClass" style="width: 50px; height: 50px;">
+                                        @(ghe.TrangThai == "Đã đặt" || ghe.TrangThai == "Không bán" ? "X" : ghe.MaSoGhe)
+                                    </label>
+                                </div>
+                            }
+                        }
+                        else
+                        {
                             <p>Không có ghế nào ở tầng trên.</p>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group mt-3">
-            <label>Số lượng vé</label>
-            <input type="number" name="soLuongVe" id="soLuongVe" class="form-control" readonly />
-        </div>
+            <div class="form-group mt-3">
+                <label>Số lượng vé</label>
+                <input type="number" name="soLuongVe" id="soLuongVe" class="form-control" readonly />
+            </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Tiếp tục đặt vé</button>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Quay lại</a>
-    </form>
+            <button type="submit" class="btn btn-primary mt-3">Tiếp tục đặt vé</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Quay lại</a>
+        </form>
+    }
 </div>
 
 @section Scripts {
+    @if (!showPhoneInput)
+    {
         <script>
             document.querySelectorAll('.ghe-checkbox').forEach(checkbox => {
                 checkbox.addEventListener('change', function () {
@@ -126,4 +157,5 @@
                 });
             });
         </script>
+    }
 }

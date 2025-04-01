@@ -5,20 +5,12 @@
       "PackagePath": "staticwebassets\\QuanLyBanVeBenXeMienDong.wxhrugv0c7.bundle.scp.css"
     },
     {
-      "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\DatVe\\Book.css",
-      "PackagePath": "staticwebassets\\css\\DatVe\\Book.css"
-    },
-    {
       "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\DatVe\\Book.js",
-      "PackagePath": "staticwebassets\\js\\DatVe\\Book.js"
     },
     {
       "Id": "D:\\DoAn-CSDL-NC\\QuanLyBanVeBenXeMienDong\\wwwroot\\js\\QuanLyVeXe\\Edit.js",
