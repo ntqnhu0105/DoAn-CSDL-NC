@@ -44,12 +44,29 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             // Kiểm tra số điện thoại
             if (string.IsNullOrEmpty(user.PhoneNumber))
             {
-                ViewBag.ShowPhoneInput = true; // Yêu cầu nhập số điện thoại
+                ViewBag.ShowPhoneInput = true;
                 ViewBag.MaChuyen = maChuyen;
                 return View(chuyenXe);
             }
 
-            // Nếu đã có số điện thoại, tiếp tục hiển thị sơ đồ ghế
+            // Lấy danh sách điểm đón và điểm trả
+            var chuyenXeDiemList = await _context.ChuyenXe_Diems
+                .Include(cd => cd.Diem)
+                .Where(cd => cd.MaChuyen == maChuyen)
+                .ToListAsync();
+
+            // Chia thành điểm đón và điểm trả
+            ViewBag.DiemDonList = chuyenXeDiemList
+                .Where(cd => cd.Diem.LoaiDiem == "Điểm đón")
+                .OrderBy(cd => cd.ThoiGianDuKien)
+                .ToList();
+
+            ViewBag.DiemTraList = chuyenXeDiemList
+                .Where(cd => cd.Diem.LoaiDiem == "Điểm trả")
+                .OrderBy(cd => cd.ThoiGianDuKien)
+                .ToList();
+
+            // Lấy danh sách ghế
             var gheList = await _context.SoGheSoGiuongs
                 .Where(sg => sg.MaChuyen == maChuyen)
                 .ToListAsync();
@@ -59,14 +76,13 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             ViewBag.GheTangTren = gheList.Where(g => g.Tang == 2).OrderBy(g => g.MaSoGhe).ToList();
 
             ViewBag.Sdt = user.PhoneNumber;
-            ViewBag.ShowPhoneInput = false; // Không cần nhập số điện thoại
+            ViewBag.ShowPhoneInput = false;
 
             return View(chuyenXe);
         }
-
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Book(string maChuyen, string maXe, string sdt, int soLuongVe, string[] maSoGhe)
+        public async Task<IActionResult> Book(string maChuyen, string maXe, string sdt, int soLuongVe, string[] maSoGhe, string maDiemDon, string maDiemTra)
         {
             var chuyenXe = await _context.ChuyenXes.FindAsync(maChuyen);
             if (chuyenXe == null || chuyenXe.TrangThai != "Chưa khởi hành")
@@ -94,6 +110,32 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             if (gheDuocChon.Count != soLuongVe)
             {
                 return BadRequest("Một hoặc nhiều ghế đã chọn không hợp lệ hoặc đã được đặt.");
+            }
+
+            // Kiểm tra điểm đón và điểm trả
+            if (string.IsNullOrEmpty(maDiemDon) || string.IsNullOrEmpty(maDiemTra))
+            {
+                return BadRequest("Vui lòng chọn điểm đón và điểm trả.");
+            }
+
+            // Kiểm tra xem điểm đón và điểm trả có hợp lệ không (thuộc chuyến xe này)
+            var diemDon = await _context.ChuyenXe_Diems
+                .Where(cd => cd.MaChuyen == maChuyen && cd.MaDiem == maDiemDon)
+                .FirstOrDefaultAsync();
+
+            var diemTra = await _context.ChuyenXe_Diems
+                .Where(cd => cd.MaChuyen == maChuyen && cd.MaDiem == maDiemTra)
+                .FirstOrDefaultAsync();
+
+            if (diemDon == null || diemTra == null)
+            {
+                return BadRequest("Điểm đón hoặc điểm trả không hợp lệ.");
+            }
+
+            // Kiểm tra logic: điểm trả phải sau điểm đón (dựa trên thời gian dự kiến)
+            if (diemTra.ThoiGianDuKien <= diemDon.ThoiGianDuKien)
+            {
+                return BadRequest("Điểm trả phải sau điểm đón về mặt thời gian.");
             }
 
             var user = await _userManager.GetUserAsync(User);
@@ -129,7 +171,9 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 MaXe = maXe,
                 NgayDatVe = DateTime.Now,
                 TrangThai = "Đã đặt",
-                SoLuongVe = soLuongVe
+                SoLuongVe = soLuongVe,
+                MaDiemDon = maDiemDon, // Lưu mã điểm đón
+                MaDiemTra = maDiemTra  // Lưu mã điểm trả
             };
 
             // Cập nhật trạng thái các ghế được chọn
@@ -191,6 +235,24 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
                 return NotFound("Vé không tồn tại hoặc đã được thanh toán.");
             }
 
+            // Lấy thông tin điểm đón
+            var diemDon = await _context.ChuyenXe_Diems
+                .Include(cd => cd.Diem)
+                .Where(cd => cd.MaChuyen == veXe.MaChuyen && cd.MaDiem == veXe.MaDiemDon)
+                .FirstOrDefaultAsync();
+
+            // Lấy thông tin điểm trả
+            var diemTra = await _context.ChuyenXe_Diems
+                .Include(cd => cd.Diem)
+                .Where(cd => cd.MaChuyen == veXe.MaChuyen && cd.MaDiem == veXe.MaDiemTra)
+                .FirstOrDefaultAsync();
+
+            // Truyền thông tin điểm đón và điểm trả vào ViewBag
+            ViewBag.DiemDon = diemDon?.Diem?.TenDiem ?? "Không xác định";
+            ViewBag.DiemDonThoiGian = diemDon?.ThoiGianDuKien.ToString("hh\\:mm") ?? "Không xác định";
+            ViewBag.DiemTra = diemTra?.Diem?.TenDiem ?? "Không xác định";
+            ViewBag.DiemTraThoiGian = diemTra?.ThoiGianDuKien.ToString("hh\\:mm") ?? "Không xác định";
+
             return View(veXe);
         }
 
@@ -233,6 +295,24 @@ namespace QuanLyBanVeBenXeMienDong.Controllers
             {
                 return Forbid("Bạn không có quyền xem thông tin vé này.");
             }
+
+            // Lấy thông tin điểm đón
+            var diemDon = await _context.ChuyenXe_Diems
+                .Include(cd => cd.Diem)
+                .Where(cd => cd.MaChuyen == veXe.MaChuyen && cd.MaDiem == veXe.MaDiemDon)
+                .FirstOrDefaultAsync();
+
+            // Lấy thông tin điểm trả
+            var diemTra = await _context.ChuyenXe_Diems
+                .Include(cd => cd.Diem)
+                .Where(cd => cd.MaChuyen == veXe.MaChuyen && cd.MaDiem == veXe.MaDiemTra)
+                .FirstOrDefaultAsync();
+
+            // Truyền thông tin điểm đón và điểm trả vào ViewBag
+            ViewBag.DiemDon = diemDon?.Diem?.TenDiem ?? "Không xác định";
+            ViewBag.DiemDonThoiGian = diemDon?.ThoiGianDuKien.ToString("hh\\:mm") ?? "Không xác định";
+            ViewBag.DiemTra = diemTra?.Diem?.TenDiem ?? "Không xác định";
+            ViewBag.DiemTraThoiGian = diemTra?.ThoiGianDuKien.ToString("hh\\:mm") ?? "Không xác định";
 
             return View(veXe);
         }

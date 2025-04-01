@@ -5,6 +5,8 @@
     ViewData["Title"] = "Chọn ghế - Đặt vé";
     var gheTangDuoi = ViewBag.GheTangDuoi as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
     var gheTangTren = ViewBag.GheTangTren as List<QuanLyBanVeBenXeMienDong.Models.Data.SoGheSoGiuong>;
+    var diemDonList = ViewBag.DiemDonList as List<QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe_Diem>;
+    var diemTraList = ViewBag.DiemTraList as List<QuanLyBanVeBenXeMienDong.Models.Data.ChuyenXe_Diem>;
     bool showPhoneInput = ViewBag.ShowPhoneInput ?? false;
 }
 
@@ -61,6 +63,31 @@
             <input type="hidden" name="maChuyen" value="@Model.MaChuyen" />
             <input type="hidden" name="maXe" value="@Model.MaXe" />
             <input type="hidden" name="sdt" value="@ViewBag.Sdt" />
+
+            <!-- Dropdown chọn điểm đón -->
+            <div class="form-group mb-3">
+                <label for="maDiemDon">Điểm đón</label>
+                <select name="maDiemDon" id="maDiemDon" class="form-control" required>
+                    <option value="">-- Chọn điểm đón --</option>
+                    @foreach (var diem in diemDonList)
+                    {
+                        <option value="@diem.MaDiem">@diem.Diem.TenDiem (Thời gian: @diem.ThoiGianDuKien.ToString("hh\\:mm"))</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Dropdown chọn điểm trả -->
+            <div class="form-group mb-3">
+                <label for="maDiemTra">Điểm trả</label>
+                <select name="maDiemTra" id="maDiemTra" class="form-control" required>
+                    <option value="">-- Chọn điểm trả --</option>
+                    @foreach (var diem in diemTraList)
+                    {
+                        <option value="@diem.MaDiem">@diem.Diem.TenDiem (Thời gian: @diem.ThoiGianDuKien.ToString("hh\\:mm"))</option>
+                    }
+                </select>
+            </div>
+
             <div class="row">
                 <!-- Tầng dưới -->
                 <div class="col-md-6">

@@ -268,49 +268,49 @@ namespace QuanLyBanVeBenXeMienDong.Models.System
 
             // Dữ liệu mẫu cho SoGheSoGiuong
             modelBuilder.Entity<SoGheSoGiuong>().HasData(
-    // Chuyến CX001, xe XE001 (40 ghế)
-    // Tầng dưới: 20 ghế (A01-A20)
-    new SoGheSoGiuong { MaSoGhe = "A01", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A02", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A03", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A04", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A05", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A06", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A07", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A08", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A09", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A10", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A11", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A12", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A13", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A14", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A15", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A16", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A17", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A18", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A19", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    new SoGheSoGiuong { MaSoGhe = "A20", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
-    // Tầng trên: 20 ghế (B01-B20)
-    new SoGheSoGiuong { MaSoGhe = "B01", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B02", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B03", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B04", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B05", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B06", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B07", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B08", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B09", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B10", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B11", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B12", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B13", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B14", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B15", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B16", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B17", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B18", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B19", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
-    new SoGheSoGiuong { MaSoGhe = "B20", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                // Chuyến CX001, xe XE001 (40 ghế)
+                // Tầng dưới: 20 ghế (A01-A20)
+                new SoGheSoGiuong { MaSoGhe = "A01", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A02", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A03", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A04", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A05", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A06", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A07", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A08", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A09", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A10", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A11", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A12", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A13", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A14", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A15", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A16", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A17", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A18", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A19", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                new SoGheSoGiuong { MaSoGhe = "A20", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 1 },
+                // Tầng trên: 20 ghế (B01-B20)
+                new SoGheSoGiuong { MaSoGhe = "B01", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B02", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B03", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B04", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B05", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B06", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B07", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B08", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B09", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B10", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B11", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B12", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B13", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B14", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B15", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B16", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B17", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B18", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B19", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
+                new SoGheSoGiuong { MaSoGhe = "B20", MaChuyen = "CX001", MaXe = "XE001", TrangThai = "Trống", Tang = 2 },
                 new SoGheSoGiuong { MaSoGhe = "B01", MaXe = "XE002", MaChuyen = "CX002", TrangThai = "Trống" },
                 new SoGheSoGiuong { MaSoGhe = "B02", MaXe = "XE002", MaChuyen = "CX002", TrangThai = "Trống" },
                 new SoGheSoGiuong { MaSoGhe = "B03", MaXe = "XE002", MaChuyen = "CX002", TrangThai = "Trống" },
@@ -332,7 +332,22 @@ namespace QuanLyBanVeBenXeMienDong.Models.System
                 new SoGheSoGiuong { MaSoGhe = "I01", MaXe = "XE009", MaChuyen = "CX012", TrangThai = "Trống" },
                 new SoGheSoGiuong { MaSoGhe = "I02", MaXe = "XE009", MaChuyen = "CX012", TrangThai = "Trống" }
             );
-           
-        }
+            modelBuilder.Entity<Diem>().HasData(
+                new Diem { MaDiem = "D001", TenDiem = "Bến xe Miền Đông Mới", DiaChi = "501 Hoàng Hữu Nam, Long Bình, Thủ Đức", MaTuyen = "TX001", LoaiDiem = "Điểm đón", ToaDoGPS = "10.947, 106.843" },
+                new Diem { MaDiem = "D002", TenDiem = "Văn phòng Quận 1", DiaChi = "293 Phạm Ngũ Lão, Quận 1, TP. HCM", MaTuyen = "TX001", LoaiDiem = "Điểm đón", ToaDoGPS = "10.768, 106.693" },
+                new Diem { MaDiem = "D003", TenDiem = "Ngã tư Thủ Đức", DiaChi = "QL1A, Linh Trung, Thủ Đức, TP. HCM", MaTuyen = "TX001", LoaiDiem = "Điểm đón", ToaDoGPS = "10.863, 106.776" },
+                new Diem { MaDiem = "D004", TenDiem = "Bến xe Liên Tỉnh Đà Lạt", DiaChi = "1 Tô Hiến Thành, Phường 3, Đà Lạt", MaTuyen = "TX001", LoaiDiem = "Điểm trả", ToaDoGPS = "11.940, 108.458" },
+                new Diem { MaDiem = "D005", TenDiem = "Văn phòng Đà Lạt", DiaChi = "17 Lương Thế Vinh, Phường 3, Đà Lạt", MaTuyen = "TX001", LoaiDiem = "Điểm trả", ToaDoGPS = "11.945, 108.435" },
+                new Diem { MaDiem = "D006", TenDiem = "Khách sạn TTC Đà Lạt", DiaChi = "2 Lê Hồng Phong, Phường 4, Đà Lạt", MaTuyen = "TX001", LoaiDiem = "Điểm trả", ToaDoGPS = "11.944, 108.438" }
+            );
+            modelBuilder.Entity<ChuyenXe_Diem>().HasData(
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D001", ThoiGianDuKien = TimeSpan.Parse("07:00") },
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D002", ThoiGianDuKien = TimeSpan.Parse("07:30") },
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D003", ThoiGianDuKien = TimeSpan.Parse("07:45") },
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D004", ThoiGianDuKien = TimeSpan.Parse("13:00") },
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D005", ThoiGianDuKien = TimeSpan.Parse("13:15") },
+                new ChuyenXe_Diem { MaChuyen = "CX001", MaDiem = "D006", ThoiGianDuKien = TimeSpan.Parse("13:30") }
+    );
+        }   
     }
 }

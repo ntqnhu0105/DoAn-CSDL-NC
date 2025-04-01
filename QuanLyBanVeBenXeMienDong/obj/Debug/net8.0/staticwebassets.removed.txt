@@ -1,2 +1,0 @@
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\css\DatVe\Book.css
-D:\DoAn-CSDL-NC\QuanLyBanVeBenXeMienDong\wwwroot\js\DatVe\Book.js

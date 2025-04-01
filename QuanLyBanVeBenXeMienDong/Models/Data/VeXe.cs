@@ -37,6 +37,8 @@ namespace QuanLyBanVeBenXeMienDong.Models.Data
         [Required]
         [StringLength(20)]
         public string TrangThai { get; set; }
+        public string MaDiemDon { get; set; }
+        public string MaDiemTra { get; set; }
 
         [Required]
         public int SoLuongVe { get; set; }
