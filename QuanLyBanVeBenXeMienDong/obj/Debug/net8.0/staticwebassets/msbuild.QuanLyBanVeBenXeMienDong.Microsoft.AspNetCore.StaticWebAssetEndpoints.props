@@ -1,17 +1,5 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/css/DatVe/Book.5j09l3gwce.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\DatVe\Book.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5j09l3gwce"},{"Name":"integrity","Value":"sha256-8Yu9idHlf14FcHYmIJgsk0\u002BUXXnqnrnVUpM5hUZwrVU="},{"Name":"label","Value":"_content/QuanLyBanVeBenXeMienDong/css/DatVe/Book.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"155"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228Yu9idHlf14FcHYmIJgsk0\u002BUXXnqnrnVUpM5hUZwrVU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 23:32:07 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/css/DatVe/Book.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\DatVe\Book.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8Yu9idHlf14FcHYmIJgsk0\u002BUXXnqnrnVUpM5hUZwrVU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"155"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228Yu9idHlf14FcHYmIJgsk0\u002BUXXnqnrnVUpM5hUZwrVU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 23:32:07 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -35,18 +23,6 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"5430"},{"Name":"Content-Type","Value":"image/x-icon"},{"Name":"ETag","Value":"\u0022Jtxf9L\u002B5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 29 Mar 2025 11:17:42 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/DatVe/Book.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\DatVe\Book.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zuj26xsQ/Bt\u002BYLyXTUBZA06PtOSMoPt2JRMtzXM\u002B\u002B3k="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"841"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zuj26xsQ/Bt\u002BYLyXTUBZA06PtOSMoPt2JRMtzXM\u002B\u002B3k=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 23:32:00 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/DatVe/Book.q5000ymvwm.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\DatVe\Book.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"q5000ymvwm"},{"Name":"integrity","Value":"sha256-zuj26xsQ/Bt\u002BYLyXTUBZA06PtOSMoPt2JRMtzXM\u002B\u002B3k="},{"Name":"label","Value":"_content/QuanLyBanVeBenXeMienDong/js/DatVe/Book.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"841"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022zuj26xsQ/Bt\u002BYLyXTUBZA06PtOSMoPt2JRMtzXM\u002B\u002B3k=\u0022"},{"Name":"Last-Modified","Value":"Mon, 31 Mar 2025 23:32:00 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/QuanLyBanVeBenXeMienDong/js/QuanLyVeXe/Edit.ekftjg4kw5.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\QuanLyVeXe\Edit.js'))</AssetFile>
