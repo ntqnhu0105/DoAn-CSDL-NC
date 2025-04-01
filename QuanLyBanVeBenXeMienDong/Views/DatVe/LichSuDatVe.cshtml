@@ -1,66 +1,102 @@
-﻿@model List<QuanLyBanVeBenXeMienDong.Models.Data.VeXe>
+﻿@using Microsoft.EntityFrameworkCore
+@model List<QuanLyBanVeBenXeMienDong.Models.Data.VeXe>
 
 @{
     ViewData["Title"] = "Lịch sử đặt vé";
 }
 
 <div class="container mt-4">
-    <h2>Lịch sử đặt vé</h2>
+    <h2 class="text-center mb-4">Lịch sử đặt vé</h2>
 
     @if (Model == null || !Model.Any())
     {
-        <div class="alert alert-info">
-            Bạn chưa đặt vé nào.
+        <div class="alert alert-info text-center">
+            Bạn chưa đặt vé nào. <a asp-controller="Home" asp-action="Index" class="alert-link">Đặt vé ngay!</a>
         </div>
     }
     else
     {
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Mã vé</th>
+                        <th>Tuyến xe</th>
+                        <th>Ngày khởi hành</th>
+                        <th>Giờ khởi hành</th>
+                        <th>Điểm đón</th>
+                        <th>Điểm trả</th>
+                        <th>Ghế</th>
+                        <th>Số lượng vé</th>
+                        <th>Tổng tiền</th>
+                        <th>Ngày đặt</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ve in Model)
+                    {
+                        // Tính tổng tiền
+                        decimal tongTien = ve.ChuyenXe.Gia * ve.SoLuongVe;
+
+                        // Lấy thông tin điểm đón và điểm trả
+                        var diemDon = await _context.ChuyenXe_Diems
+                            .Include(cd => cd.Diem)
+                            .Where(cd => cd.MaChuyen == ve.MaChuyen && cd.MaDiem == ve.MaDiemDon)
+                            .FirstOrDefaultAsync();
+
+                        var diemTra = await _context.ChuyenXe_Diems
+                            .Include(cd => cd.Diem)
+                            .Where(cd => cd.MaChuyen == ve.MaChuyen && cd.MaDiem == ve.MaDiemTra)
+                            .FirstOrDefaultAsync();
+
                         <tr>
-                            <th>Mã vé</th>
-                            <th>Tuyến xe</th>
-                            <th>Ngày khởi hành</th>
-                            <th>Giờ khởi hành</th>
-                            <th>Ghế</th>
-                            <th>Số lượng vé</th>
-                            <th>Giá (VNĐ)</th>
-                            <th>Ngày đặt</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
+                            <td>@ve.MaVeXe</td>
+                            <td>@ve.ChuyenXe.TuyenXe.DiemDi - @ve.ChuyenXe.TuyenXe.DiemDen</td>
+                            <td>@ve.ChuyenXe.NgayKhoiHanh.ToString("dd/MM/yyyy")</td>
+                            <td>@ve.ChuyenXe.GioKhoiHanh</td>
+                            <td>@(diemDon?.Diem?.TenDiem ?? "Không xác định") <br /><small class="text-muted">(@(diemDon?.ThoiGianDuKien.ToString("hh\\:mm") ?? "N/A"))</small></td>
+                            <td>@(diemTra?.Diem?.TenDiem ?? "Không xác định") <br /><small class="text-muted">(@(diemTra?.ThoiGianDuKien.ToString("hh\\:mm") ?? "N/A"))</small></td>
+                            <td>@ve.MaSoGhe</td>
+                            <td>@ve.SoLuongVe</td>
+                            <td>@tongTien.ToString("N0") VNĐ</td>
+                            <td>@ve.NgayDatVe.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                @switch (ve.TrangThai)
+                                {
+                                    case "Đã đặt":
+                                        <span class="badge bg-warning text-dark">@ve.TrangThai</span>
+                                        break;
+                                    case "Đã thanh toán":
+                                        <span class="badge bg-success">@ve.TrangThai</span>
+                                        break;
+                                    case "Đã hủy":
+                                        <span class="badge bg-danger">@ve.TrangThai</span>
+                                        break;
+                                    default:
+                                        <span class="badge bg-secondary">@ve.TrangThai</span>
+                                        break;
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="XacNhan" asp-route-maVeXe="@ve.MaVeXe" class="btn btn-info btn-sm">Xem</a>
+                                @if (ve.TrangThai == "Đã đặt" || ve.TrangThai == "Đã thanh toán")
+                                {
+                                    <form asp-action="HuyVe" method="post" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn hủy vé này không?');">
+                                        <input type="hidden" name="maVeXe" value="@ve.MaVeXe" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Hủy</button>
+                                    </form>
+                                }
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var ve in Model)
-                        {
-                            <tr>
-                                <td>@ve.MaVeXe</td>
-                                <td>@ve.ChuyenXe.TuyenXe.DiemDi - @ve.ChuyenXe.TuyenXe.DiemDen</td>
-                                <td>@ve.ChuyenXe.NgayKhoiHanh.ToString("dd/MM/yyyy")</td>
-                                <td>@ve.ChuyenXe.GioKhoiHanh</td>
-                                <td>@ve.MaSoGhe</td>
-                                <td>@ve.SoLuongVe</td>
-                                <td>@ve.ChuyenXe.Gia.ToString("N0")</td>
-                                <td>@ve.NgayDatVe.ToString("dd/MM/yyyy HH:mm")</td>
-                                <td>@ve.TrangThai</td>
-                                <td>
-                                    <a asp-action="XacNhan" asp-route-maVeXe="@ve.MaVeXe" class="btn btn-info btn-sm">Xem</a>
-                                    @if (ve.TrangThai == "Đã đặt" || ve.TrangThai == "Đã thanh toán")
-                                    {
-                                        <form asp-action="HuyVe" method="post" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn hủy vé này không?');">
-                                            <input type="hidden" name="maVeXe" value="@ve.MaVeXe" />
-                                            <button type="submit" class="btn btn-danger btn-sm">Hủy</button>
-                                        </form>
-                                    }
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     }
-    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mt-3">Về trang chủ</a>
+    <div class="mt-3 text-center">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Về trang chủ</a>
+    </div>
 </div>
+@inject QuanLyBanVeBenXeMienDong.Models.System.ApplicationDbContext _context

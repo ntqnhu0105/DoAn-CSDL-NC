@@ -6,32 +6,34 @@
 }
 
 <div class="container mt-4">
-    <h2 class="text-center text-success">Xác Nhận Đặt Vé</h2>
+    <h2 class="text-center text-success mb-4">Xác Nhận Đặt Vé</h2>
 
     <!-- Thông báo theo trạng thái vé -->
     @if (Model.TrangThai == "Đã thanh toán")
     {
-            <div class="alert alert-success text-center">
-                Thanh toán thành công! Dưới đây là thông tin vé của bạn.
-            </div>
+        <div class="alert alert-success text-center">
+            Thanh toán thành công! Dưới đây là thông tin vé của bạn.
+        </div>
     }
     else if (Model.TrangThai == "Đã hủy")
     {
-            <div class="alert alert-warning text-center">
-                Vé này đã bị hủy.
-            </div>
+        <div class="alert alert-warning text-center">
+            Vé này đã bị hủy.
+        </div>
     }
     else if (Model.TrangThai == "Đã đặt")
     {
-            <div class="alert alert-info text-center">
-                Vé đã được đặt. Vui lòng hoàn tất thanh toán để xác nhận.
-            </div>
+        <div class="alert alert-info text-center">
+            Vé đã được đặt. Vui lòng hoàn tất thanh toán để xác nhận.
+            <br />
+            <a asp-action="ThanhToan" asp-route-maVeXe="@Model.MaVeXe" class="btn btn-primary btn-sm mt-2">Thanh toán ngay</a>
+        </div>
     }
     else
     {
-            <div class="alert alert-secondary text-center">
-                Thông tin vé của bạn (Trạng thái: @Model.TrangThai).
-            </div>
+        <div class="alert alert-secondary text-center">
+            Thông tin vé của bạn (Trạng thái: @Model.TrangThai).
+        </div>
     }
 
     <div class="card mt-4 shadow-sm">
@@ -39,6 +41,7 @@
             <h4>Mã Vé: @Model.MaVeXe</h4>
         </div>
         <div class="card-body">
+            <!-- Thông tin khách hàng -->
             <h5 class="text-primary">Thông Tin Khách Hàng</h5>
             <dl class="row">
                 <dt class="col-sm-4">Họ và Tên:</dt>
@@ -49,12 +52,17 @@
                 <dd class="col-sm-8">@(Model.KhachHang?.Email ?? "Không có dữ liệu")</dd>
             </dl>
 
+            <!-- Thông tin chuyến xe -->
             <h5 class="text-primary">Thông Tin Chuyến Xe</h5>
             <dl class="row">
                 <dt class="col-sm-4">Mã Chuyến:</dt>
                 <dd class="col-sm-8">@Model.MaChuyen</dd>
                 <dt class="col-sm-4">Tuyến Xe:</dt>
                 <dd class="col-sm-8">@(Model.ChuyenXe?.TuyenXe != null ? $"{Model.ChuyenXe.TuyenXe.DiemDi} - {Model.ChuyenXe.TuyenXe.DiemDen}" : "Không có dữ liệu")</dd>
+                <dt class="col-sm-4">Điểm Đón:</dt>
+                <dd class="col-sm-8">@ViewBag.DiemDon <small class="text-muted">(Thời gian: @ViewBag.DiemDonThoiGian)</small></dd>
+                <dt class="col-sm-4">Điểm Trả:</dt>
+                <dd class="col-sm-8">@ViewBag.DiemTra <small class="text-muted">(Thời gian: @ViewBag.DiemTraThoiGian)</small></dd>
                 <dt class="col-sm-4">Loại Xe:</dt>
                 <dd class="col-sm-8">@(Model.ChuyenXe?.Xe?.LoaiXe?.TenLoai ?? "Không có dữ liệu")</dd>
                 <dt class="col-sm-4">Mã Xe:</dt>
@@ -65,14 +73,32 @@
                 <dd class="col-sm-8">@Model.SoLuongVe</dd>
             </dl>
 
+            <!-- Thông tin đặt vé -->
             <h5 class="text-primary">Thông Tin Đặt Vé</h5>
             <dl class="row">
                 <dt class="col-sm-4">Ngày Đặt Vé:</dt>
                 <dd class="col-sm-8">@Model.NgayDatVe.ToString("dd/MM/yyyy HH:mm")</dd>
                 <dt class="col-sm-4">Trạng Thái:</dt>
-                <dd class="col-sm-8">@Model.TrangThai</dd>
+                <dd class="col-sm-8">
+                    @switch (Model.TrangThai)
+                    {
+                        case "Đã đặt":
+                            <span class="badge bg-warning text-dark">@Model.TrangThai</span>
+                            break;
+                        case "Đã thanh toán":
+                            <span class="badge bg-success">@Model.TrangThai</span>
+                            break;
+                        case "Đã hủy":
+                            <span class="badge bg-danger">@Model.TrangThai</span>
+                            break;
+                        default:
+                            <span class="badge bg-secondary">@Model.TrangThai</span>
+                            break;
+                    }
+                </dd>
             </dl>
 
+            <!-- Thông tin thanh toán -->
             <h5 class="text-primary">Thanh Toán</h5>
             <dl class="row">
                 <dt class="col-sm-4">Giá vé đơn:</dt>
